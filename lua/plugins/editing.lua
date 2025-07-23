@@ -1,16 +1,22 @@
+-- 与文本编辑相关的插件
 return {
-{
-  'booperlv/nvim-gomove',
-  config = function()
-    require('gomove').setup {
-      map_defaults = true,  -- 使用默认快捷键
-      reindent = true,      -- 移动后自动调整缩进
-      undojoin = true,      -- 合并为一次撤销操作
-      move_past_end_col = false, -- 不允许移出右边界
-    }
-  end
-},
 
+
+  -- nvim-gomove：通过快捷键移动或复制选中的代码块
+  {
+    'booperlv/nvim-gomove',
+    config = function()
+      require('gomove').setup {
+        map_defaults = true,        -- 是否启用插件自带的默认按键
+        reindent = true,            -- 移动后重新对齐缩进，保持代码整洁
+        undojoin = true,            -- 将一次移动视为一次撤销步骤
+        move_past_end_col = false,  -- 防止移动时越过行尾
+      }
+    end
+  },
+
+  -- nvim-treesitter：基于 Tree-sitter 的语法解析器
+  -- 提供更加精准的高亮与代码折叠功能
 {
   "nvim-treesitter/nvim-treesitter",
   build = ":TSUpdate",
@@ -84,6 +90,7 @@ vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
 
   end,
 }
+
 
 
 
