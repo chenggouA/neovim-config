@@ -1,9 +1,7 @@
-
 -- 与界面和视觉效果相关的插件
 return {
   -- nightfox 主题，备用的配色方案
   { "EdenEast/nightfox.nvim" },
-
 
   -- 主用主题 tokyonight
   {
@@ -14,10 +12,9 @@ return {
     config = function()
         -- 主题的一些个性化设置
         require("tokyonight").setup({
-          style="moon",
-          transparent=false,
-          termina_colors=true
-
+          style = "moon",
+          transparent = false,
+          terminal_colors = true,
         })
 
     end
