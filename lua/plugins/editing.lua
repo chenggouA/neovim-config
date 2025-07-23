@@ -17,33 +17,37 @@ return {
 
   -- nvim-treesitter：基于 Tree-sitter 的语法解析器
   -- 提供更加精准的高亮与代码折叠功能
-{
-  "nvim-treesitter/nvim-treesitter",
-  build = ":TSUpdate",
-  event = { "BufReadPost", "BufNewFile" },
-  config = function()
-    require("nvim-treesitter.configs").setup({
-      ensure_installed = {
-        "lua", "vim", "bash", "python", "javascript",
-        "typescript", "html", "css", "json", "markdown",
-        "c", "cpp", "go", "rust", "toml", "yaml"
-      },
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
-        -- Rainbow parentheses
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    event = { "BufReadPost", "BufNewFile" },
+    dependencies = {
+      -- 彩虹括号支持
+      "p00f/nvim-ts-rainbow",
+    },
+    config = function()
+      require("nvim-treesitter.configs").setup({
+        ensure_installed = {
+          "lua", "vim", "bash", "python", "javascript",
+          "typescript", "html", "css", "json", "markdown",
+          "c", "cpp", "go", "rust", "toml", "yaml",
+        },
+        highlight = {
+          enable = true,
+          additional_vim_regex_highlighting = false,
+        },
+        -- 彩虹括号
         rainbow = {
           enable = true,
           extended_mode = true,
           max_file_lines = nil,
-        }
-      },
-      indent = {
-        enable = true,
-      },
-    })
-  end,
-},
+        },
+        indent = {
+          enable = true,
+        },
+      })
+    end,
+  },
 {
   "akinsho/toggleterm.nvim",
   version = "*",
