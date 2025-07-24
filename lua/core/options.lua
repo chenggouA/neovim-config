@@ -25,6 +25,10 @@ opt.mouse:append("a")       -- 在所有模式下都支持鼠标操作
 -- 外观相关
 opt.termguicolors = true    -- 开启真彩色，配合主题使用效果更佳
 opt.signcolumn = "yes"      -- 始终显示左侧的符号列，避免文本跳动
+vim.g.neovide_transparency = 0.8  -- 0~1，推荐 0.75~0.9
+vim.g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * 0.8))
+vim.g.neovide_floating_blur_amount_x = 2.0
+vim.g.neovide_floating_blur_amount_y = 2.0
 
 -- 设置字体
 if vim.g.neovide then
@@ -34,3 +38,7 @@ end
 
 -- 启动系统剪切板支持
 vim.o.clipboard = "unnamedplus"
+
+
+
+

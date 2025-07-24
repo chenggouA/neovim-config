@@ -1,24 +1,32 @@
 -- 与界面和视觉效果相关的插件
 return {
-  -- nightfox 主题，备用的配色方案
-  { "EdenEast/nightfox.nvim" },
 
-  -- 主用主题 tokyonight
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function()
-        -- 主题的一些个性化设置
-        require("tokyonight").setup({
-          style = "moon",
-          transparent = false,
-          terminal_colors = true,
-        })
+    { "scottmckendry/cyberdream.nvim", priority = 1000 ,
 
-    end
-  },
+  config = function()
+    require("cyberdream").setup({
+      transparent = false,       -- 如果你想背景透明，可改为 true
+      italic_comments = true,
+      hide_fillchars = true,
+      borderless_telescope = true,
+    })
+    vim.cmd("colorscheme cyberdream")
+  end,
+    },
+  
+
+    {
+  "xiyaowong/transparent.nvim",
+  config = function()
+    require("transparent").setup({
+      extra_groups = {
+        "NormalFloat", "NvimTreeNormal", "TelescopeNormal"
+      },
+      exclude_groups = {},
+    })
+  end,
+},
+
 
   -- 状态栏插件 lualine
   {
@@ -107,10 +115,6 @@ return {
     event = "VeryLazy",
     config = function()
       require("which-key").setup({
-        triggers_blacklist = {
-            n = {"g"}, -- normal 模式禁用g前缀触发器
-            v = { "g" },  -- visual 模式中也禁用 g 前缀触发器
-        },
         window = {
           border = "rounded",
         },
