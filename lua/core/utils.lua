@@ -13,4 +13,22 @@ function M.merge_tables(...)
   return result
 end
 
+
+function M.get_preferred_shell()
+  if vim.fn.has("win32") == 1 then
+    local pwsh = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
+    if vim.fn.executable(pwsh) == 1 then
+      return pwsh
+    else
+      return "powershell"
+    end
+  else
+    if vim.fn.executable("zsh") == 1 then
+      return "zsh"
+    else
+      return "bash"
+    end
+  end
+end
+
 return M
