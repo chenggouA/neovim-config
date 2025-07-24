@@ -11,3 +11,10 @@ vim.keymap.set("n", "<leader>o", "<cmd>only<CR>", { desc = "只保留当前窗�
 
 -- 缓冲区管理
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "关闭当前 buffer" })
+
+
+-- 使用 <leader>y 将选中文本复制到系统剪贴板
+vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', { desc = "复制到系统剪贴板" })
+
+-- 使用 <leader>p 从系统剪贴板粘贴
+vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "粘贴系统剪贴板" })

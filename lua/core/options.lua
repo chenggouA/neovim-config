@@ -31,3 +31,6 @@ if vim.g.neovide then
   vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 end
 
+
+-- 启动系统剪切板支持
+vim.o.clipboard = "unnamedplus"
