@@ -102,5 +102,38 @@ return {
     end,
   },
 
+ {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("which-key").setup({
+        window = {
+          border = "rounded",
+        },
+        layout = {
+          spacing = 6,
+          align = "center",
+        },
+      })
 
+      -- ⬇️ 直接在这里注册按键
+      local wk = require("which-key")
+      wk.register({
+        ["<leader>f"] = {
+          name = "查找 🔍",
+          f = { "<cmd>Telescope find_files<CR>", "查找文件" },
+          g = { "<cmd>Telescope live_grep<CR>", "全局搜索" },
+        },
+        ["<leader>t"] = {
+          name = "终端 🖥️",
+          f = { "<cmd>ToggleTerm direction=float<CR>", "浮动终端" },
+        },
+        ["<leader>q"] = {
+          name = "窗口 ❌",
+          q = { "<cmd>close<CR>", "关闭窗口" },
+          Q = { "<cmd>qa!<CR>", "强制退出" },
+        },
+      })
+    end,
+  },
 }
