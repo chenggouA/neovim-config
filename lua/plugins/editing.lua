@@ -1,3 +1,5 @@
+
+local utils = require("core.utils")
 -- 与文本编辑相关的插件
 return {
   -- nvim-gomove：通过快捷键移动或复制选中的代码块
@@ -56,7 +58,8 @@ return {
         persist_size = true,          -- 记住上次大小
         direction = "horizontal",     -- 默认水平分屏
         close_on_exit = true,         -- 退出时自动关闭
-        shell = vim.o.shell,          -- 使用当前 shell
+        shell = utils.get_preferred_shell(),          -- 动态选择shell
+
       })
 
       local Terminal = require("toggleterm.terminal").Terminal

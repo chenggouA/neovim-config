@@ -20,4 +20,13 @@ return {
       vim.keymap.set("n", "<A-l>", ss.resize_right)
     end,
   },
+
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = "Telescope", -- 只有使用 Telescope 命令时才加载
+    config = function()
+      require("telescope").setup({})
+    end,
+  },
 }

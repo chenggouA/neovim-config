@@ -108,7 +108,11 @@ return {
     config = function()
       require("which-key").setup({
         win = {
-          border = "rounded",
+          triggers_blacklist = {
+              n = {"g"}, -- normal 模式禁用g前缀触发器
+              v = { "g" },  -- visual 模式中也禁用 g 前缀触发器
+          },
+            border = "rounded",
         },
         layout = {
           spacing = 6,
