@@ -23,4 +23,4 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- 设置配色方案
-vim.cmd[[colorscheme tokyonight]]
+pcall(vim.cmd, "colorscheme tokyonight")

@@ -107,7 +107,7 @@ return {
     event = "VeryLazy",
     config = function()
       require("which-key").setup({
-        window = {
+        win = {
           border = "rounded",
         },
         layout = {
@@ -119,20 +119,16 @@ return {
       -- ⬇️ 直接在这里注册按键
       local wk = require("which-key")
       wk.register({
-        ["<leader>f"] = {
-          name = "查找 🔍",
-          f = { "<cmd>Telescope find_files<CR>", "查找文件" },
-          g = { "<cmd>Telescope live_grep<CR>", "全局搜索" },
-        },
-        ["<leader>t"] = {
-          name = "终端 🖥️",
-          f = { "<cmd>ToggleTerm direction=float<CR>", "浮动终端" },
-        },
-        ["<leader>q"] = {
-          name = "窗口 ❌",
-          q = { "<cmd>close<CR>", "关闭窗口" },
-          Q = { "<cmd>qa!<CR>", "强制退出" },
-        },
+        { "<leader>f", group = "查找 🔍" },
+        { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "查找文件" },
+        { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "全局搜索" },
+
+        { "<leader>t", group = "终端 🖥️" },
+        { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "浮动终端" },
+
+        { "<leader>q", group = "窗口 ❌" },
+        { "<leader>qq", "<cmd>close<CR>", desc = "关闭窗口" },
+        { "<leader>qQ", "<cmd>qa!<CR>", desc = "强制退出" },
       })
     end,
   },
