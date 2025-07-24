@@ -25,3 +25,9 @@ opt.mouse:append("a")       -- 在所有模式下都支持鼠标操作
 -- 外观相关
 opt.termguicolors = true    -- 开启真彩色，配合主题使用效果更佳
 opt.signcolumn = "yes"      -- 始终显示左侧的符号列，避免文本跳动
+
+-- 设置字体
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMono Nerd Font:h14"
+end
+

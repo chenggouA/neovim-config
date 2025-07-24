@@ -6,6 +6,7 @@
   "nvim-tree.lua": { "branch": "master", "commit": "6b5b36659688767fb9f133bb83024ab1466fe5cd" },
   "nvim-treesitter": { "branch": "master", "commit": "42fc28ba918343ebfd5565147a42a26580579482" },
   "nvim-web-devicons": { "branch": "master", "commit": "0422a19d9aa3aad2c7e5cca167e5407b13407a9d" },
+  "rainbow-delimiters.nvim": { "branch": "master", "commit": "49372aadaaf04d14a50efaa34150c51d5a8047e1" },
   "smart-splits.nvim": { "branch": "master", "commit": "f59fddc055373ec0fe2bbe2a3e7d7df2ee314994" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" }

@@ -14,35 +14,33 @@ return {
   },
 
   -- nvim-treesitter：基于 Tree-sitter 的语法解析器
-  {
-    "nvim-treesitter/nvim-treesitter",
-    build = ":TSUpdate",               -- 安装后自动更新语法树
-    event = { "BufReadPost", "BufNewFile" }, -- 在读取或新建文件后加载
-    dependencies = {
-      "p00f/nvim-ts-rainbow",          -- 彩虹括号支持
-    },
-    config = function()
-      require("nvim-treesitter.configs").setup({
-        ensure_installed = {
-          "lua", "vim", "bash", "python", "javascript",
-          "typescript", "html", "css", "json", "markdown",
-          "c", "cpp", "go", "rust", "toml", "yaml",
-        },
-        highlight = {
-          enable = true,               -- 启用语法高亮
-          additional_vim_regex_highlighting = false,
-        },
-        rainbow = {
-          enable = true,               -- 开启彩虹括号
-          extended_mode = true,
-          max_file_lines = nil,
-        },
-        indent = {
-          enable = true,
-        },
-      })
-    end,
+{
+  "nvim-treesitter/nvim-treesitter",
+  build = ":TSUpdate",
+  event = { "BufReadPost", "BufNewFile" },
+  dependencies = {
+    "HiPhish/rainbow-delimiters.nvim", -- ✅ 新的彩虹括号插件
   },
+  config = function()
+    require("nvim-treesitter.install").prefer_git = true
+    require("nvim-treesitter.install").compilers = {}
+
+    require("nvim-treesitter.configs").setup({
+      ensure_installed = {
+        "lua", "vim", "bash", "python", "javascript",
+        "typescript", "html", "css", "json", "markdown",
+        "c", "cpp", "go", "rust", "toml", "yaml",
+      },
+      highlight = {
+        enable = true,
+        additional_vim_regex_highlighting = false,
+      },
+      indent = {
+        enable = true,
+      },
+    })
+  end,
+},
 
   -- 内置终端插件 toggleterm
   {
@@ -83,4 +81,31 @@ return {
       vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
     end,
   },
+
+{
+  "HiPhish/rainbow-delimiters.nvim",
+  config = function()
+    local rainbow_delimiters = require("rainbow-delimiters")
+    vim.g.rainbow_delimiters = {
+      strategy = {
+        [""] = rainbow_delimiters.strategy["global"],
+        vim = rainbow_delimiters.strategy["local"],
+      },
+      query = {
+        [""] = "rainbow-delimiters",
+        lua = "rainbow-blocks",
+      },
+      highlight = {
+        "RainbowRed",
+        "RainbowYellow",
+        "RainbowBlue",
+        "RainbowOrange",
+        "RainbowGreen",
+        "RainbowViolet",
+        "RainbowCyan",
+      },
+    }
+  end,
+}
+
 }
