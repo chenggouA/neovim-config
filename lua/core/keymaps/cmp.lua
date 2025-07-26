@@ -20,7 +20,6 @@ function M.mapping(cmp, luasnip)
       end
     end, { "i", "s" }),
 
-    ["<A>"] = cmp.mapping.complete(),
     ["<C-j>"] = cmp.mapping.select_next_item(),
     ["<C-k>"] = cmp.mapping.select_prev_item(),
   })
