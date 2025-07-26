@@ -35,7 +35,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
-          theme = "tokyonight", -- 与主题风格一致
+          theme = "auto", -- 与主题风格一致
           section_separators = { left = "", right = "" },
           component_separators = "|",
         },
@@ -110,38 +110,47 @@ return {
     end,
   },
 
- {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("which-key").setup({
-        window = {
-          border = "rounded",
-        },
-        layout = {
-          spacing = 6,
-          align = "center",
-        },
-      })
 
-      -- ⬇️ 直接在这里注册按键
-      local wk = require("which-key")
-      wk.register({
-        ["<leader>f"] = {
-          name = "查找 🔍",
-          f = { "<cmd>Telescope find_files<CR>", "查找文件" },
-          g = { "<cmd>Telescope live_grep<CR>", "全局搜索" },
-        },
-        ["<leader>t"] = {
-          name = "终端 🖥️",
-          f = { "<cmd>ToggleTerm direction=float<CR>", "浮动终端" },
-        },
-        ["<leader>q"] = {
-          name = "窗口 ❌",
-          q = { "<cmd>close<CR>", "关闭窗口" },
-          Q = { "<cmd>qa!<CR>", "强制退出" },
-        },
-      })
-    end,
+{
+  "echasnovski/mini.nvim",
+  config = function()
+    require("mini.icons").setup()
+  end
+},
+    {
+        "folke/which-key.nvim",
+  event = "VeryLazy",          -- 懒加载
+  opts = {                     -- 直接写进 opts，lazy.nvim 会传给 setup()
+    win = { border = "rounded" },
+    layout = { spacing = 6, align = "center" },
+    -- 如果真想屏蔽 gc，可用 triggers（下行示例已注释）：
+    -- triggers = { { "gc", mode = { "n", "v" } }, { "gcc", mode = "n" } },
   },
+
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)             -- 初始化插件
+
+    ------------------------------------------------------------------
+    -- ① 只登记分组（不会覆盖已有按键的 desc，也不会报旧 spec）
+    ------------------------------------------------------------------
+    wk.add({
+      { "<leader>f", group = "查找 🔍" },
+      { "<leader>t", group = "终端 🖥️" },
+      { "<leader>q", group = "窗口 ❌" },
+    })
+
+    ------------------------------------------------------------------
+    -- ② 给 **确实要新增** 的快捷键单独补充 rhs
+    ------------------------------------------------------------------
+    wk.add({
+      { "<leader>ff", "<cmd>Telescope find_files<CR>",         desc = "查找文件" },
+      { "<leader>fg", "<cmd>Telescope live_grep<CR>",          desc = "全局搜索" },
+      { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>",   desc = "浮动终端" },
+      { "<leader>qq", "<cmd>close<CR>",                        desc = "关闭窗口" },
+      { "<leader>qQ", "<cmd>qa!<CR>",                          desc = "强制退出" },
+    })
+  end,
+
+    }
 }
