@@ -36,8 +36,9 @@ if vim.g.neovide then
 end
 
 
--- 启动系统剪切板支持
-vim.o.clipboard = "unnamedplus"
+-- 默认不与系统剪贴板同步，避免 yy、dd 等操作污染剪贴板
+-- 如需从系统剪贴板复制，可使用 <leader>y 等自定义按键
+vim.o.clipboard = ""
 
 
 
