@@ -21,12 +21,19 @@ return {
     end,
   },
 
-  {
-    "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    cmd = "Telescope", -- 只有使用 Telescope 命令时才加载
-    config = function()
-      require("telescope").setup({})
-    end,
+
+
+{
+  "nvim-telescope/telescope.nvim",
+  dependencies = { "nvim-lua/plenary.nvim" },
+
+  keys = {
+    { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "查找文件" },
+    { "<leader>fg", "<cmd>Telescope live_grep<CR>",  desc = "全局搜索" },
   },
+
+  cmd  = "Telescope",       -- 可留可删
+  opts = true,              -- 若只是默认配置，留 true 即可；若自定义请写表
+  -- config = function() end -- 如果用了 opts，就把 config 删掉
+}
 }
