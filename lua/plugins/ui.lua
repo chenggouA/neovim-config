@@ -29,19 +29,48 @@ return {
 
 
   -- 状态栏插件 lualine
-  {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" }, -- 可选：用于显示图标
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "auto", -- 与主题风格一致
-          section_separators = { left = "", right = "" },
-          component_separators = "|",
-        },
-      })
-    end,
-  },
+{
+  "nvim-lualine/lualine.nvim",
+  dependencies = { "nvim-tree/nvim-web-devicons" },
+
+  config = function()
+    ------------------------------------------------------------------
+    -- 提取当前虚拟环境名（来自 $VIRTUAL_ENV）
+    ------------------------------------------------------------------
+    local function python_env()
+      local venv = vim.env.VIRTUAL_ENV
+      if venv and venv ~= "" then
+        local name = vim.fn.fnamemodify(venv, ":t")   -- 取最后一级目录
+        return "󰌠 " .. name                          -- 图标+名称
+      end
+      return ""
+    end
+
+    ------------------------------------------------------------------
+    -- lualine 设置
+    ------------------------------------------------------------------
+    require("lualine").setup({
+      options = {
+        theme = "auto",
+        section_separators   = { left = "", right = "" },
+        component_separators = "|",
+        globalstatus         = true,
+      },
+
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch", "diff" },
+        lualine_c = { "filename" },
+
+        -- ★ 把虚拟环境放右侧；可改放 lualine_c
+        lualine_x = { python_env, "encoding", "filetype" },
+
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
+      },
+    })
+  end,
+},
   -- 文件浏览器 nvim-tree
   {
     "nvim-tree/nvim-tree.lua",
