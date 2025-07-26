@@ -35,7 +35,7 @@ return {
     config = function()
       require("lualine").setup({
         options = {
-          theme = "tokyonight", -- 与主题风格一致
+          theme = "auto", -- 与主题风格一致
           section_separators = { left = "", right = "" },
           component_separators = "|",
         },
@@ -110,32 +110,40 @@ return {
     end,
   },
 
- {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("which-key").setup({
-        window = {
-          border = "rounded",
-        },
-        layout = {
-          spacing = 6,
-          align = "center",
-        },
-      })
 
-      -- ⬇️ 直接在这里注册按键
-      local wk = require("which-key")
-      wk.register({
-        { "<leader>f", group = "查找 🔍" },
-        { "<leader>ff", "<cmd>Telescope find_files<CR>", desc = "查找文件" },
-        { "<leader>fg", "<cmd>Telescope live_grep<CR>", desc = "全局搜索" },
-        { "<leader>t", group = "终端 🖥️" },
-        { "<leader>tf", "<cmd>ToggleTerm direction=float<CR>", desc = "浮动终端" },
-        { "<leader>q", group = "窗口 ❌" },
-        { "<leader>qq", "<cmd>close<CR>", desc = "关闭窗口" },
-        { "<leader>qQ", "<cmd>qa!<CR>", desc = "强制退出" },
-      })
-    end,
+{
+  "echasnovski/mini.nvim",
+  config = function()
+    require("mini.icons").setup()
+  end
+},
+    {
+        "folke/which-key.nvim",
+  event = "VeryLazy",          -- 懒加载
+  opts = {                     -- 直接写进 opts，lazy.nvim 会传给 setup()
+    win = { border = "rounded" },
+    layout = { spacing = 6, align = "center" },
+    -- 如果真想屏蔽 gc，可用 triggers（下行示例已注释）：
+    -- triggers = { { "gc", mode = { "n", "v" } }, { "gcc", mode = "n" } },
   },
+
+  config = function(_, opts)
+    local wk = require("which-key")
+    wk.setup(opts)             -- 初始化插件
+
+    ------------------------------------------------------------------
+    -- ① 只登记分组（不会覆盖已有按键的 desc，也不会报旧 spec）
+    ------------------------------------------------------------------
+
+wk.add({
+  { "<leader>f", group = "Find 🔍" },
+  { "<leader>t", group = "Terminal 🖥️" },
+  { "<leader>b", group = "Buffer 📄" },
+  { "<leader>w", group = "Window ❌" },
+  { "<leader>g", group = "Git ⑂"   },
+})
+
+  end,
+
+    }
 }

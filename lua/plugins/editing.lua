@@ -66,11 +66,11 @@ return {
 
       -- 终端 1
       local term1 = Terminal:new({ count = 1, direction = "horizontal" })
-      vim.keymap.set("n", "<leader>1", function() term1:toggle() end, { desc = "切换终端 1" })
+      vim.keymap.set("n", "<leader>t1", function() term1:toggle() end, { desc = "切换终端 1" })
 
       -- 终端 2
       local term2 = Terminal:new({ count = 2, direction = "horizontal" })
-      vim.keymap.set("n", "<leader>2", function() term2:toggle() end, { desc = "切换终端 2" })
+      vim.keymap.set("n", "<leader>t2", function() term2:toggle() end, { desc = "切换终端 2" })
 
       -- 浮动终端
       local float_term = Terminal:new({ direction = "float" })
