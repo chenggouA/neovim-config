@@ -64,24 +64,13 @@ return {
 
       local Terminal = require("toggleterm.terminal").Terminal
 
-      -- 终端 1
+      -- 终端实例
       local term1 = Terminal:new({ count = 1, direction = "horizontal" })
-      vim.keymap.set("n", "<leader>t1", function() term1:toggle() end, { desc = "切换终端 1" })
-
-      -- 终端 2
       local term2 = Terminal:new({ count = 2, direction = "horizontal" })
-      vim.keymap.set("n", "<leader>t2", function() term2:toggle() end, { desc = "切换终端 2" })
-
-      -- 浮动终端
       local float_term = Terminal:new({ direction = "float" })
-      vim.keymap.set("n", "<leader>tf", function() float_term:toggle() end, { desc = "浮动终端" })
 
-      -- terminal 模式下的常用按键
-      vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-      vim.keymap.set("t", "i", "i", { noremap = true })
-      vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:q<CR>", { noremap = true })
-      vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]])
-      vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
+      -- 键位绑定统一到 core.keymaps.toggleterm
+      require("core.keymaps.toggleterm").setup(term1, term2, float_term)
     end,
   },
 
