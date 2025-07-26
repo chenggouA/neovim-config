@@ -16,10 +16,11 @@ end
 
 function M.get_preferred_shell()
   if vim.fn.has("win32") == 1 then
-    local pwsh = "C:\\Program Files\\PowerShell\\7\\pwsh.exe"
-    if vim.fn.executable(pwsh) == 1 then
-      return pwsh
+    -- 优先使用 pwsh (PowerShell 7+)，如果它在系统 PATH 中
+    if vim.fn.executable("pwsh") == 1 then
+      return "pwsh"
     else
+      -- 否则回退到 Windows PowerShell
       return "powershell"
     end
   else
