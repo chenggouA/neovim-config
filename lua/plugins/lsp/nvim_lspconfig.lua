@@ -21,31 +21,14 @@ return {
 
     local on_attach = require("core.keymaps.lsp").on_attach
 
-    local function python_from_venv()
-      local venv = vim.env.VIRTUAL_ENV
-      if not (venv and #venv > 0) then return nil end
-      local sep = package.config:sub(1,1) == "\\" and "\\" or "/"
-      return venv .. sep .. (sep == "\\" and "Scripts\\python.exe" or "bin/python")
-    end
-
-    local function site_packages()
-      local venv = vim.env.VIRTUAL_ENV
-      if not (venv and #venv > 0) then return nil end
-      local sep = package.config:sub(1,1) == "\\" and "\\" or "/"
-      if sep == "\\" then
-        return venv .. "\\Lib\\site-packages"
-      else
-        local pyver = vim.version().major .. "." .. vim.version().minor
-        return string.format("%s/lib/python%s/site-packages", venv, pyver)
-      end
-    end
+    local python = require("core.python")
 
     lspconfig.pyright.setup({
       capabilities = capabilities,
       on_attach = on_attach,
       before_init = function(_, cfg)
-        local py = python_from_venv()
-        local sp = site_packages()
+        local py = python.python_from_venv()
+        local sp = python.site_packages()
         cfg.settings = cfg.settings or {}
         cfg.settings.python = cfg.settings.python or {}
         if py then

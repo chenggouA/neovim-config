@@ -2,10 +2,10 @@ return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
   config = function()
+    local python = require("core.python")
     local function python_env()
-      local venv = vim.env.VIRTUAL_ENV
-      if venv and venv ~= "" then
-        local name = vim.fn.fnamemodify(venv, ":t")
+      local name = python.venv_name()
+      if name then
         return "󰌠 " .. name
       end
       return ""
