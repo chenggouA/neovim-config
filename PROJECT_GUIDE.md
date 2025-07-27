@@ -15,6 +15,12 @@ Lua 语法检查：
 find lua -name '*.lua' -print0 | xargs -0 luac -p
 ```
 
+## 终端快捷键
+- `<leader>t1` 切换终端 1
+- `<leader>t2` 切换终端 2
+- `<leader>tf` 打开浮动终端
+- 在终端模式下按 `<Esc>` 返回普通模式，输入 `exit` 或 `:q` 关闭终端
+
 # 目录结构与关键文件
 ```bash
 $ tree -L 2

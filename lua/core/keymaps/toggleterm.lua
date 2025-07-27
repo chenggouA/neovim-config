@@ -6,8 +6,6 @@ function M.setup(term1, term2, float_term)
   vim.keymap.set("n", "<leader>tf", function() float_term:toggle() end, { desc = "浮动终端" })
 
   vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-  vim.keymap.set("t", "i", "i", { noremap = true })
-  vim.keymap.set("t", "<leader>q", "<C-\\><C-n>:q<CR>", { noremap = true })
   vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]])
   vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
 end
