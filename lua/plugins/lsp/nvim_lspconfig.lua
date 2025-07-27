@@ -20,6 +20,7 @@ return {
     },
 
     config = function()
+        require("core.keymaps.diagnostics").setup()
         local lspconfig = require("lspconfig")
 
         --------------------------------------------------------------------------
@@ -28,6 +29,7 @@ return {
         local ok_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
         local capabilities = ok_cmp and cmp_lsp.default_capabilities()
             or vim.lsp.protocol.make_client_capabilities()
+        capabilities.offsetEncoding = { "utf-16" }
 
         --------------------------------------------------------------------------
         -- 公共 on_attach：保存前自动格式化（谁能格式化谁执行）
@@ -86,30 +88,7 @@ return {
         --------------------------------------------------------------------------
         lspconfig.ruff.setup({
             capabilities = capabilities,
-            on_attach    = on_attach, -- 同一个 on_attach
-
-            -- ❓ 如需 CLI 额外参数，可在 init_options.settings.args 写 Ruff 参数
-            -- init_options = {
-            --   settings = { args = { "--line-length", "100" } },
-            -- },
-        })
-
-        --------------------------------------------------------------------------
-        -- ③ Lua 语言服务器
-        --------------------------------------------------------------------------
-        lspconfig.lua_ls.setup({
-            capabilities = capabilities,
-            on_attach    = on_attach,
-            settings     = {
-                Lua = {
-                    diagnostics = { globals = { "vim" } },
-                    workspace   = {
-                        library = vim.api.nvim_get_runtime_file("", true),
-                        checkThirdParty = false,
-                    },
-                    telemetry   = { enable = false },
-                },
-            },
+            on_attach    = on_attach, -- 你的按键/格式化逻辑
         })
     end,
 }

@@ -9,6 +9,7 @@ return {
     local wk = require("which-key")
     wk.setup(opts)
     wk.add({
+      { "<leader>c", group = "代码操作 💻" },
       { "<leader>f", group = "Find 🔍" },
       { "<leader>t", group = "Terminal 🖥️" },
       { "<leader>b", group = "Buffer 📄" },

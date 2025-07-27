@@ -42,4 +42,12 @@ function M.site_packages()
   end
 end
 
+---Get the path to pyproject.toml in the project root.
+---@param root_dir string The project root directory.
+---@return string
+function M.project_config(root_dir)
+  -- 想让 Ruff 读 pyproject.toml 就放这；若用 .ruff.toml 改下文件名即可
+  return vim.fs.joinpath(root_dir, "pyproject.toml")
+end
+
 return M
