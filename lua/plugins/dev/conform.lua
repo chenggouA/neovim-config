@@ -55,14 +55,6 @@ return {
 		}
 	end,
 
-	-- 3. 手动触发
-	keys = {
-		{
-			"<leader>cf",
-			function()
-				require("conform").format({ lsp_fallback = true })
-			end,
-			desc = "Format buffer",
-		},
-	},
+        -- 3. 手动触发
+        keys = require("core.keymaps.conform").keys,
 }
