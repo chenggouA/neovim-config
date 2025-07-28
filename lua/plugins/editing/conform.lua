@@ -14,7 +14,7 @@ return {
 			-- ★ 保存时自动格式化
 			format_on_save = function(bufnr)
 				local ft = vim.bo[bufnr].filetype
-				if ft == "python" or ft == "lua" or ft == "json" then
+				if ft == "python" or ft == "lua" or ft == "json" or ft == "markdown" then
 					return { lsp_fallback = true } -- conform 要求返回 table
 				end
 			end,
@@ -23,10 +23,16 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				json = { "jq" },
+				markdown = { "prettier" },
 			},
 
 			-- 2. 每个 formatter 的调用参数
 			formatters = {
+				prettier = {
+					command = "prettier",
+					args = { "--stdin-filepath", "$FILENAME" },
+					stdin = true,
+				},
 				------------------------------------------------------------------
 				-- Lua: stylua
 				------------------------------------------------------------------

@@ -24,15 +24,15 @@
    - 推荐安装 [Nerd Fonts](https://www.nerdfonts.com/font-downloads) 中的 **JetBrainsMono** 字体，以确保图标正确显示。
 
 3. 安装依赖
-3.1 **安装 C 编译器**
+   3.1 **安装 C 编译器**
    - 配置启用了 tree-sitter，需要系统具备 C 编译器。
    - Linux 用户可通过包管理器安装 `gcc` 或 `clang`；Windows 用户可从 [LLVM 发布页](https://github.com/llvm/llvm-project/releases) 获取 `clang`。
-3.2 stylua(可选)
+     3.2 stylua(可选)
    - 项目配置了`lua`格式化工具，windwos用户建议使用如下命令安装
+
    ```powershell
       scoop install stylua
    ```
-
 
 4. **启动 Neovim**
    - 首次运行会自动安装 `lazy.nvim` 及所有插件，完成后即可使用。
@@ -140,4 +140,3 @@
 - `<S-Tab>`：跳转到上一个片段
 - `<C-j>`：选择下一个建议
 - `<C-k>`：选择上一个建议
-
