@@ -14,7 +14,9 @@ function M.setup()
 
 	-- 使用 <leader>p 从系统剪贴板粘贴
 	vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', { desc = "粘贴系统剪贴板" })
-
+	-- Normal 和 Visual 模式：H 跳行首（^），L 跳行尾（$）
+	vim.keymap.set({ "n", "v" }, "H", "^", { desc = "Jump to line start (non-blank)" })
+	vim.keymap.set({ "n", "v" }, "L", "$", { desc = "Jump to line end" })
 	local map = vim.keymap.set
 	local opts = { noremap = true, silent = true }
 	-- 关闭当前窗口 / 强制关闭
