@@ -1,6 +1,5 @@
 local M = {}
 
-M.keys = {
-}
+M.keys = {}
 
 return M
