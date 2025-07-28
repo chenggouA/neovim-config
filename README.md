@@ -159,6 +159,13 @@
 - `i`：进入当前目录为根
 - `u`：回到上级目录
 
+### Git
+
+- `<leader>gd`：打开 Diffview
+- `<leader>gD`：关闭 Diffview
+- `<leader>gh`：查看文件历史
+- `<leader>gH`：关闭文件历史
+
 ### Quicknote
 
 - `<leader>qn`：新建当前行笔记
