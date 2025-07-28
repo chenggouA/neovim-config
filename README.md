@@ -27,18 +27,58 @@
    3.1 **安装 C 编译器**
    - 配置启用了 tree-sitter，需要系统具备 C 编译器。
    - Linux 用户可通过包管理器安装 `gcc` 或 `clang`；Windows 用户可从 [LLVM 发布页](https://github.com/llvm/llvm-project/releases) 获取 `clang`。
-     3.2 stylua(可选)
-   - 项目配置了`lua`格式化工具，windwos用户建议使用如下命令安装
+   3.2 **stylua (可选)**
+   - 项目配置了 `lua` 格式化工具，Windows 用户可使用如下命令安装
 
    ```powershell
-      scoop install stylua
+   scoop install stylua
    ```
+
+   3.3 **其他格式化器**
+   - `ruff` 与 `ruff-lsp`（Python LSP/诊断）
+
+     ```bash
+     pip install ruff ruff-lsp
+     ```
+
+   - `prettier`（Markdown）
+
+     ```bash
+     npm install -g prettier
+     ```
+
+   - `jq`（JSON）
+
+     ```bash
+     # Debian/Ubuntu
+     sudo apt-get install jq
+     # macOS
+     brew install jq
+     # Windows (scoop)
+     scoop install jq
+     ```
+
+   - `ruff-lua`（额外 Lua 格式化器）
+
+     ```bash
+     pip install ruff-lua
+     ```
 
 4. **启动 Neovim**
    - 首次运行会自动安装 `lazy.nvim` 及所有插件，完成后即可使用。
    - 之后可运行 `:Lazy sync` 来更新插件。
 
 所有配置文件均位于 `lua/` 目录，可根据需要自行修改扩展。
+
+## 格式化器列表
+
+`conform.nvim` 根据文件类型调用相应的格式化器：
+
+- **Lua**：`stylua`
+- **JSON**：`jq`
+- **Markdown**：`prettier`
+- **额外**：`ruff-lua` 用于 Lua 代码
+- （当前未配置 Python 格式化器）
 
 ## 剪贴板操作
 
