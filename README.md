@@ -112,6 +112,21 @@
 - `i`：进入当前目录为根
 - `u`：回到上级目录
 
+### Quicknote
+
+- `<leader>qn`：新建当前行笔记
+- `<leader>qN`：新建并打开项目笔记
+- `<leader>qo`：打开当前行笔记
+- `<leader>qj`：跳转到下一条笔记
+- `<leader>qk`：跳转到上一条笔记
+- `<leader>ql`：列出所有笔记
+- `<leader>qs`：显示笔记标记
+- `<leader>qS`：隐藏笔记标记
+- `<leader>qd`：删除当前行笔记
+- `<leader>qD`：删除项目笔记
+- `<leader>qi`：导入项目笔记
+- `<leader>qe`：导出项目笔记
+
 ### 自动补全
 
 - `<Tab>`：确认当前建议或跳转到下一个片段
