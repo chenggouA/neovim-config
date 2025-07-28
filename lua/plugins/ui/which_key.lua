@@ -15,6 +15,7 @@ return {
       { "<leader>b", group = "Buffer 📄" },
       { "<leader>w", group = "Window ❌" },
       { "<leader>g", group = "Git ⑂" },
+      { "<leader>q", group = "Quicknote 📝" },
     })
   end,
 }
