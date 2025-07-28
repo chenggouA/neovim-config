@@ -37,7 +37,12 @@ $ tree -L 2
 - **init.lua** – 载入选项与按键，并安装 lazy.nvim
 - **lazy-lock.json** – 锁定插件版本
 - **lua/core** – 选项、按键映射及 Python 辅助函数
-- **lua/plugins** – 按功能分类的插件配置
+- **lua/plugins** – 按功能分类的插件配置，可扩展为多个子目录：
+  - `appearance`：主题与界面
+  - `dev`：LSP、补全与代码增强
+  - `navigation`：文件与窗口跳转
+  - `git`：版本控制相关
+  - `utility`：其他工具插件
 
 # 架构与数据流
 ```mermaid
@@ -46,9 +51,9 @@ graph TD
   init --> keymaps
   init --> lazy
   lazy --> plugins
-  plugins --> ui
-  plugins --> editing
-  plugins --> lsp
+  plugins --> appearance
+  plugins --> dev
+  plugins --> utility
   plugins --> navigation
   plugins --> git
 ```
@@ -74,23 +79,23 @@ Neovim 首先执行 `init.lua`，设置全局选项与按键，然后通过 lazy
 源文件中未发现 TODO 或 FIXME 标记。
 
 # 功能索引
-- **主题与透明度** – `lua/plugins/ui/cyberdream.lua`, `lua/plugins/ui/transparent.lua`
-- **状态栏** – `lua/plugins/ui/lualine.lua`
-- **文件树** – `lua/plugins/ui/nvim_tree.lua`
-- **快捷键提示** – `lua/plugins/ui/which_key.lua`
-- **图标支持** – `lua/plugins/ui/mini.lua`
-- **终端切换** – `lua/plugins/editing/toggleterm.lua`
-- **Treesitter 高亮** – `lua/plugins/editing/nvim_treesitter.lua`
-- **行/块移动** – `lua/plugins/editing/nvim_gomove.lua`
-- **彩虹括号** – `lua/plugins/editing/rainbow_delimiters.lua`
-- **代码格式化** – `lua/plugins/editing/conform.lua`
+- **主题与透明度** – `lua/plugins/appearance/cyberdream.lua`, `lua/plugins/appearance/transparent.lua`
+- **状态栏** – `lua/plugins/appearance/lualine.lua`
+- **文件树** – `lua/plugins/navigation/nvim_tree.lua`
+- **快捷键提示** – `lua/plugins/appearance/which_key.lua`
+- **图标支持** – `lua/plugins/appearance/mini.lua`
+- **终端切换** – `lua/plugins/utility/toggleterm.lua`
+- **Treesitter 高亮** – `lua/plugins/dev/nvim_treesitter.lua`
+- **行/块移动** – `lua/plugins/dev/nvim_gomove.lua`
+- **彩虹括号** – `lua/plugins/dev/rainbow_delimiters.lua`
+- **代码格式化** – `lua/plugins/dev/conform.lua`
 - **窗口分割管理** – `lua/plugins/navigation/smart_splits.lua`
 - **模糊查找** – `lua/plugins/navigation/telescope.lua`
 - **Git 集成** – `lua/plugins/git/gitsigns.lua`
-- **自动补全** – `lua/plugins/lsp/nvim_cmp.lua`
-- **LSP 配置** – `lua/plugins/lsp/nvim_lspconfig.lua`
-- **Mason 集成** – `lua/plugins/lsp/mason.lua`, `lua/plugins/lsp/mason_lspconfig.lua`
-- **Python 虚拟环境辅助** – `lua/core/python.lua`, `lua/plugins/lsp/uv.lua`
+- **自动补全** – `lua/plugins/dev/nvim_cmp.lua`
+- **LSP 配置** – `lua/plugins/dev/nvim_lspconfig.lua`
+- **Mason 集成** – `lua/plugins/dev/mason.lua`
+- **Python 虚拟环境辅助** – `lua/core/python.lua`, `lua/plugins/dev/uv.lua`
 
 # 参考链接
 - [Nerd Fonts](https://www.nerdfonts.com/font-downloads)
