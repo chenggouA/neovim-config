@@ -9,8 +9,7 @@ function M.on_attach(bufnr)
 
 	keymap("n", "l", api.node.open.edit, opts("打开"))
 	keymap("n", "h", api.node.navigate.parent_close, opts("收起"))
-	keymap("n", "L", api.node.open.vertical, opts("垂直分屏打开"))
-	keymap("n", "S", api.node.open.horizontal, opts("水平分屏打开"))
+	keymap("n", "v", api.node.open.vertical, opts("垂直分屏打开"))
 
 	keymap("n", "a", api.fs.create, opts("新建"))
 	keymap("n", "r", api.fs.rename, opts("重命名"))
