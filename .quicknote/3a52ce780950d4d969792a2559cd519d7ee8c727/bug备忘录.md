@@ -13,3 +13,11 @@
 6. ~~似乎Markdown格式化没有起作用，同时treesitter在刚打卡的时候好像不起作用~~
 
 7. 在当前背景下终端输入的参数不明显
+
+8. git M 的文件图标太丑
+
+9. 对于`treesitter`来说在LINUX环境中的编译器不应该是`CLANG`
+
+10. git diff 对比的时候应该是使用TAB选中，而不是ENTER选中
+
+
