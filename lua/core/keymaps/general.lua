@@ -1,4 +1,5 @@
 local M = {}
+
 function M.setup()
 	vim.g.mapleader = " "
 
@@ -32,6 +33,13 @@ function M.setup()
 	-- 退出 Neovim（写出 \ 保存）
 	map("n", "<leader>wq", "<cmd>q<CR>", "退出 Neovim")
 	map("n", "<leader>wQ", "<cmd>qa!<CR>", "强制退出全部")
+
+	-- 折叠相关快捷键（leader z）
+	map("n", "<leader>zo", "zR", "展开所有折叠")
+	map("n", "<leader>zc", "zM", "折叠所有代码块")
+	map("n", "<leader>zt", "za", "切换当前折叠状态")
+	map("n", "<leader>zu", "zo", "展开当前折叠")
+	map("n", "<leader>zz", "zc", "折叠当前代码块")
 end
 
 return M

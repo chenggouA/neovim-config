@@ -38,3 +38,8 @@ end
 -- 默认不与系统剪贴板同步，避免 yy、dd 等操作污染剪贴板
 -- 如需从系统剪贴板复制，可使用 <leader>y 等自定义按键
 vim.o.clipboard = ""
+-- 设置代码折叠
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
+opt.foldenable = false -- 默认不折叠，打开文件时是展开的
+opt.foldlevel = 99 -- 打开所有层级
