@@ -27,7 +27,7 @@
    3.1 **安装 C 编译器**
    - 配置启用了 tree-sitter，需要系统具备 C 编译器。
    - Linux 用户可通过包管理器安装 `gcc` 或 `clang`；Windows 用户可从 [LLVM 发布页](https://github.com/llvm/llvm-project/releases) 获取 `clang`。
-   3.2 **stylua (可选)**
+     3.2 **stylua (可选)**
    - 项目配置了 `lua` 格式化工具，Windows 用户可使用如下命令安装
 
    ```powershell
@@ -114,7 +114,7 @@
 ### 文件查找
 
 - `<leader>ff`：查找文件
-- `<leader>fg`：全局搜索
+- `<leader>fg`：全局搜索(需要依赖`ripgrep`工具)
 
 ### LSP
 
