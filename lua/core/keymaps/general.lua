@@ -7,9 +7,6 @@ function M.setup()
 		vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
 	end
 
-	-- 文件树开关
-	map("n", "<leader>e", "<cmd>NvimTreeToggle<CR>", "切换文件树")
-
 	-- 缓冲区管理
 	map("n", "<leader>bd", "<cmd>bdelete<CR>", "关闭当前 buffer")
 
