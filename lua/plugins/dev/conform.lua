@@ -55,6 +55,6 @@ return {
 		}
 	end,
 
-        -- 3. 手动触发
-        keys = require("core.keymaps.conform").keys,
+	-- 3. 手动触发
+	keys = require("core.keymaps.conform").keys,
 }
