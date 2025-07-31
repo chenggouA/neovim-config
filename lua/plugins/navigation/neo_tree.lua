@@ -8,10 +8,7 @@ return {
 		"nvim-tree/nvim-web-devicons",
 	},
 
-	keys = {
-		{ "<leader>e", "<cmd>Neotree toggle left<CR>", desc = "NeoTree 文件" },
-		{ "<leader>ge", "<cmd>Neotree git_status toggle<CR>", desc = "NeoTree Git" },
-	},
+       keys = require("core.keymaps.neo_tree").keys,
 	-- 只保留 config，不再写 opts
 	config = function()
 		require("neo-tree").setup({

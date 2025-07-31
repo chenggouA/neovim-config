@@ -92,7 +92,7 @@
 
 ### 常用操作
 
-- `<leader>e`：切换文件树
+- `<leader>e`：切换 Neo-tree 文件视图
 - `<leader>bd`：关闭当前 buffer
 - `<leader>wd`：关闭当前窗口
 - `<leader>wD`：强制关闭窗口
@@ -144,7 +144,7 @@
 - `<C-h>`/`<C-j>`/`<C-k>`/`<C-l>`：在窗口之间移动
 - `<A-h>`/`<A-j>`/`<A-k>`/`<A-l>`：调整窗口大小
 
-### nvim-tree
+### Neo-tree
 
 在文件树窗口中可用的快捷键：
 
@@ -157,16 +157,15 @@
 - `y`：复制
 - `x`：剪切
 - `p`：粘贴
-- `.`：显示/隐藏隐藏文件
 - `R`：刷新
 - `q`：关闭文件树
-- `<Tab>`：浮动预览
-- `gf`：定位当前文件
+- `<Tab>`：预览文件
 - `i`：进入当前目录为根
 - `u`：回到上级目录
 
 ### Git
 
+- `<leader>ge`：切换 Neo-tree Git 视图
 - `<leader>gd`：打开 Diffview
 - `<leader>gD`：关闭 Diffview
 - `<leader>gh`：查看文件历史
