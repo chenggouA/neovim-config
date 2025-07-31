@@ -22,11 +22,11 @@ return {
 				},
 			},
 			filters = {
-				dotfiles = false,
+				dotfiles = true,
 			},
 			git = {
 				enable = true,
-				ignore = false,
+				ignore = true,
 			},
 			on_attach = require("core.keymaps.nvimtree").on_attach,
 		})
