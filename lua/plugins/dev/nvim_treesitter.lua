@@ -6,25 +6,22 @@ return {
 		"HiPhish/rainbow-delimiters.nvim",
 	},
 	config = function()
-		local os_name = vim.loop.os_uname().sysname
+		-- 应用编译器配置到nvim-treesitter
+		local function detect_available_compilers()
+			local candidates = { "clang", "gcc", "cl" } -- clang优先，最后是 MSVC 的 cl.exe
+			local found = {}
 
-		-- 根据操作系统设置合适的编译器
-		local compilers
-		if os_name == "Linux" then
-			-- Linux系统使用gcc
-			compilers = { "gcc" }
-		elseif os_name == "Darwin" then
-			-- macOS系统使用clang
-			compilers = { "clang" }
-		else
-			-- 其他系统默认使用gcc
-			compilers = { "gcc" }
+			for _, compiler in ipairs(candidates) do
+				if vim.fn.executable(compiler) == 1 then
+					table.insert(found, compiler)
+				end
+			end
+
+			return found
 		end
 
-		-- 应用编译器配置到nvim-treesitter
+		local compilers = detect_available_compilers()
 		require("nvim-treesitter.install").compilers = compilers
-
-		-- 可选：打印当前使用的编译器信息，方便调试
 		vim.notify(string.format("nvim-treesitter 将使用以下编译器: %s", table.concat(compilers, ", ")))
 
 		require("nvim-treesitter.install").prefer_git = true
