@@ -24,8 +24,10 @@ return {
 			filters = {
 				dotfiles = true,
 			},
+			filesystem_watchers = { enable = false },
+			update_focused_file = { enable = false },
 			git = {
-				enable = true,
+				enable = false,
 				ignore = true,
 			},
 			on_attach = require("core.keymaps.nvimtree").on_attach,
