@@ -6,6 +6,6 @@ return {
         require("plugins.dev.conform"),
         require("plugins.dev.nvim_cmp"),
         require("plugins.dev.mason"),
-        require("plugins.dev.uv"),
+        require("plugins.dev.whichpy"),
         require("plugins.dev.nvim_lspconfig"),
 }
