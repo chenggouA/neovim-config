@@ -34,7 +34,28 @@ vim.g.neovide_floating_blur_amount_y = 2.0
 if vim.g.neovide then
 	vim.o.guifont = "JetBrainsMono Nerd Font:h14"
 end
+-- 缩放函数
+local function change_font_size(delta)
+	-- 解析当前 guifont = "<name>:h<size>"
+	local name, size = string.match(vim.o.guifont, "([^:]+):h(%d+)")
+	name, size = name or default_font, tonumber(size) or default_size
+	size = math.max(size + delta, 6) -- 不让字号小于 6
+	vim.o.guifont = string.format("%s:h%d", name, size)
+end
 
+-- 快捷键：Ctrl + = / Ctrl + - / Ctrl + 0
+local map = vim.keymap.set
+for _, mode in ipairs({ "n", "i" }) do
+	map(mode, "<C-=>", function()
+		change_font_size(1)
+	end, { desc = "字体放大" })
+	map(mode, "<C-->", function()
+		change_font_size(-1)
+	end, { desc = "字体缩小" })
+	map(mode, "<C-0>", function()
+		vim.o.guifont = string.format("%s:h%d", default_font, default_size)
+	end, { desc = "恢复默认字号" })
+end
 -- 默认不与系统剪贴板同步，避免 yy、dd 等操作污染剪贴板
 -- 如需从系统剪贴板复制，可使用 <leader>y 等自定义按键
 vim.o.clipboard = ""
