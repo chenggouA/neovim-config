@@ -41,6 +41,7 @@ return {
 
 			-- ✨ 文件系统设置
 			filesystem = {
+                bind_to_cwd = false,   
 				follow_current_file = { enabled = true },
 				hijack_netrw_behavior = "open_current",
 				filtered_items = {
