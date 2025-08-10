@@ -50,6 +50,11 @@ function M.setup()
 	map("n", "<leader>zt", "za", "切换当前折叠状态")
 	map("n", "<leader>zu", "zo", "展开当前折叠")
 	map("n", "<leader>zz", "zc", "折叠当前代码块")
+
+	-- Python：一键激活项目 .venv 并重启 Pyright
+	map("n", "<leader>va", function()
+		require("core.python").activate_project_venv()
+	end, "激活项目 .venv 并重启 Pyright")
 end
 
 return M

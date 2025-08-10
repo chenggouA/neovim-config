@@ -44,19 +44,62 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
 
-            -- 你的 venv 逻辑保留
+            -- 确保每次配置刷新都写入 venv/extraPaths
             before_init = function(_, cfg)
                 local py = python.python_from_venv()
-                local sp = python.site_packages()
+                local sps = python.site_packages_list() or (python.site_packages() and { python.site_packages() })
+                local venv_dir = python.get_venv() or python.find_project_venv()
                 cfg.settings = cfg.settings or {}
                 cfg.settings.python = cfg.settings.python or {}
                 if py then
                     cfg.settings.python.defaultInterpreterPath = py
+                    cfg.settings.python.pythonPath = py -- compatibility for older pyright
                 end
-
+                if venv_dir then
+                    cfg.settings.python.venvPath = vim.fn.fnamemodify(venv_dir, ":h")
+                    cfg.settings.python.venv = vim.fn.fnamemodify(venv_dir, ":t")
+                end
                 cfg.settings.python.analysis = cfg.settings.python.analysis or {}
-                if sp then
-                    cfg.settings.python.analysis.extraPaths = { sp }
+                if sps and #sps > 0 then
+                    cfg.settings.python.analysis.extraPaths = sps
+                end
+                -- Ensure pyright process sees the venv via environment
+                if venv_dir then
+                    local sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
+                    local path_sep = (sep == "\\") and ";" or ":"
+                    local bin_dir = venv_dir .. sep .. (sep == "\\" and "Scripts" or "bin")
+                    local current_path = vim.env.PATH or os.getenv("PATH") or ""
+                    cfg.cmd_env = cfg.cmd_env or {}
+                    cfg.cmd_env.VIRTUAL_ENV = venv_dir
+                    cfg.cmd_env.PATH = bin_dir .. path_sep .. current_path
+                end
+            end,
+            on_new_config = function(cfg)
+                local py = python.python_from_venv()
+                local sps = python.site_packages_list() or (python.site_packages() and { python.site_packages() })
+                local venv_dir = python.get_venv() or python.find_project_venv()
+                cfg.settings = cfg.settings or {}
+                cfg.settings.python = cfg.settings.python or {}
+                if py then
+                    cfg.settings.python.defaultInterpreterPath = py
+                    cfg.settings.python.pythonPath = py -- compatibility for older pyright
+                end
+                if venv_dir then
+                    cfg.settings.python.venvPath = vim.fn.fnamemodify(venv_dir, ":h")
+                    cfg.settings.python.venv = vim.fn.fnamemodify(venv_dir, ":t")
+                end
+                cfg.settings.python.analysis = cfg.settings.python.analysis or {}
+                if sps and #sps > 0 then
+                    cfg.settings.python.analysis.extraPaths = sps
+                end
+                if venv_dir then
+                    local sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
+                    local path_sep = (sep == "\\") and ";" or ":"
+                    local bin_dir = venv_dir .. sep .. (sep == "\\" and "Scripts" or "bin")
+                    local current_path = vim.env.PATH or os.getenv("PATH") or ""
+                    cfg.cmd_env = cfg.cmd_env or {}
+                    cfg.cmd_env.VIRTUAL_ENV = venv_dir
+                    cfg.cmd_env.PATH = bin_dir .. path_sep .. current_path
                 end
             end,
 
