@@ -14,11 +14,13 @@ return {
 		return {
 
 			-- 1. 每种语言对应的 formatter 链
-			formatters_by_ft = {
-				lua = { "stylua" },
-				json = { "jq" },
-				markdown = { "prettier" },
-			},
+            formatters_by_ft = {
+                lua = { "stylua" },
+                json = { "jq" },
+                markdown = { "prettier" },
+                -- Python：使用 Ruff 作为格式化器（先修复再格式化）
+                python = { "ruff_fix", "ruff_format" },
+            },
 
 			-- 2. 每个 formatter 的调用参数
 			formatters = {
@@ -39,11 +41,24 @@ return {
 				------------------------------------------------------------------
 				-- JSON: jq
 				------------------------------------------------------------------
-				jq = {
+                jq = {
 					command = "jq",
 					args = { "-M", "." },
 					stdin = true,
 				},
+                ------------------------------------------------------------------
+                -- Python: ruff as formatter
+                ------------------------------------------------------------------
+                ruff_fix = {
+                    command = "ruff",
+                    args = { "--fix", "-" },
+                    stdin = true,
+                },
+                ruff_format = {
+                    command = "ruff",
+                    args = { "format", "-" },
+                    stdin = true,
+                },
 			},
 		}
 	end,

@@ -73,11 +73,8 @@ return {
         })
 
         --------------------------------------------------------------------------
-        -- ② Ruff‑LSP ─ 诊断 + 格式化 + Code Action
+        -- ② 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
+        --    如需 Ruff 诊断/Code Action，可在此重新启用
         --------------------------------------------------------------------------
-        lspconfig.ruff.setup({
-            capabilities = capabilities,
-            on_attach = on_attach, -- 你的按键/格式化逻辑
-        })
     end,
 }
