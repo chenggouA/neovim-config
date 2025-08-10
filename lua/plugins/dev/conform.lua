@@ -12,13 +12,6 @@ return {
 	opts = function()
 		local python = require("core.python") -- 你已有的工具
 		return {
-			-- ★ 保存时自动格式化
-			format_on_save = function(bufnr)
-				local ft = vim.bo[bufnr].filetype
-				if ft == "python" or ft == "lua" or ft == "json" or ft == "markdown" then
-					return { lsp_fallback = true } -- conform 要求返回 table
-				end
-			end,
 
 			-- 1. 每种语言对应的 formatter 链
 			formatters_by_ft = {
