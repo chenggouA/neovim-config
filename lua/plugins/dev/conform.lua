@@ -10,7 +10,6 @@ return {
 	event = "BufWritePre",
 
 	opts = function()
-		local python = require("core.python") -- 你已有的工具
 		return {
 
 			-- 1. 每种语言对应的 formatter 链
@@ -18,8 +17,9 @@ return {
                 lua = { "stylua" },
                 json = { "jq" },
                 markdown = { "prettier" },
-                -- Python：使用 Ruff 作为格式化器（先修复再格式化）
-                python = { "ruff_fix", "ruff_format" },
+                -- Python：优先使用 uvx 的全局 ruff；若无则退回系统 ruff
+                -- 顺序：fix -> format
+                python = { "ruff_uvx_fix", "ruff_fix", "ruff_uvx_format", "ruff_format" },
             },
 
 			-- 2. 每个 formatter 的调用参数
@@ -47,17 +47,39 @@ return {
 					stdin = true,
 				},
                 ------------------------------------------------------------------
-                -- Python: ruff as formatter
+                -- Python: ruff as formatter (uvx 优先)
                 ------------------------------------------------------------------
-                ruff_fix = {
-                    command = "ruff",
-                    args = { "--fix", "-" },
+				ruff_uvx_fix = {
+                    command = "uvx",
+                    args = { "ruff", "check", "--fix", "--stdin-filename", "$FILENAME", "-" },
                     stdin = true,
+                    condition = function()
+                        return vim.fn.executable("uvx") == 1
+                    end,
                 },
-                ruff_format = {
+				ruff_fix = {
                     command = "ruff",
-                    args = { "format", "-" },
+                    args = { "check", "--fix", "--stdin-filename", "$FILENAME", "-" },
                     stdin = true,
+                    condition = function()
+                        return vim.fn.executable("ruff") == 1
+                    end,
+                },
+				ruff_uvx_format = {
+                    command = "uvx",
+                    args = { "ruff", "format", "--stdin-filename", "$FILENAME", "-" },
+                    stdin = true,
+                    condition = function()
+                        return vim.fn.executable("uvx") == 1
+                    end,
+                },
+				ruff_format = {
+                    command = "ruff",
+                    args = { "format", "--stdin-filename", "$FILENAME", "-" },
+                    stdin = true,
+                    condition = function()
+                        return vim.fn.executable("ruff") == 1
+                    end,
                 },
 			},
 		}

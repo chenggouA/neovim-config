@@ -13,3 +13,6 @@
 - 加固 `pyright` 配置：仅在 `site-packages` 目录真实存在时设置 `python.analysis.extraPaths`（`lua/plugins/dev/nvim_lspconfig.lua`）
 - 校验：以 headless 方式启动 Neovim，Lua 语法与加载无报错
 
+- 格式化体验
+  - Python 格式化改为优先通过 `uvx ruff` 执行（全局安装），若不可用则回退到系统 `ruff`；不再在 `<leader>cf` 自动激活 venv（`lua/plugins/dev/conform.lua` / `lua/core/keymaps/conform.lua`）
+
