@@ -24,4 +24,10 @@ function M.open_neotree_project_root()
   vim.cmd("Neotree reveal dir=" .. vim.fn.fnameescape(root))
 end
 
+-- 在项目根切换 Neo-tree（打开则关闭，关闭则打开并定位当前文件）
+function M.toggle_neotree_project_root()
+  local root = project_root_from(0)
+  vim.cmd("Neotree toggle reveal dir=" .. vim.fn.fnameescape(root))
+end
+
 return M
