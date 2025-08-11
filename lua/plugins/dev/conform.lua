@@ -19,7 +19,7 @@ return {
                 markdown = { "prettier" },
                 -- Python：优先使用 uvx 的全局 ruff；若无则退回系统 ruff
                 -- 顺序：fix -> format
-                python = { "ruff_uvx_fix", "ruff_fix", "ruff_uvx_format", "ruff_format" },
+                python = {"ruff_fix", "ruff_format" },
             },
 
 			-- 2. 每个 formatter 的调用参数
@@ -47,30 +47,14 @@ return {
 					stdin = true,
 				},
                 ------------------------------------------------------------------
-                -- Python: ruff as formatter (uvx 优先)
+                -- Python: ruff as formatter
                 ------------------------------------------------------------------
-				ruff_uvx_fix = {
-                    command = "uvx",
-                    args = { "ruff", "check", "--fix", "--stdin-filename", "$FILENAME", "-" },
-                    stdin = true,
-                    condition = function()
-                        return vim.fn.executable("uvx") == 1
-                    end,
-                },
 				ruff_fix = {
                     command = "ruff",
                     args = { "check", "--fix", "--stdin-filename", "$FILENAME", "-" },
                     stdin = true,
                     condition = function()
                         return vim.fn.executable("ruff") == 1
-                    end,
-                },
-				ruff_uvx_format = {
-                    command = "uvx",
-                    args = { "ruff", "format", "--stdin-filename", "$FILENAME", "-" },
-                    stdin = true,
-                    condition = function()
-                        return vim.fn.executable("uvx") == 1
                     end,
                 },
 				ruff_format = {
