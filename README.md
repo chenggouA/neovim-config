@@ -48,6 +48,9 @@
 - `<leader>bd`：关闭当前 buffer
 - `<leader>wq`：退出 Neovim
 
+### 导航
+- `<A-Left>` / `<A-Right>`：编辑器历史后退 / 前进（等价 `<C-o>` / `<C-i>`，类 VSCode 体验）
+
 ### 窗口与终端
 - `<C-h/j/k/l>`：窗口间移动
 - `<A-h/j/k/l>`：调整窗口大小
@@ -80,6 +83,7 @@
 
 - **tree-sitter 编译失败**：确认已安装 GCC/Clang 等 C 编译器。
 - **系统剪贴板未同步**：默认不与系统剪贴板共享，可使用 `<leader>y` 复制、`<leader>p` 粘贴。
+- **Alt 方向键无效（tmux）**：在 `~/.tmux.conf` 中加入 `set -g xterm-keys on`，重启 tmux。
 
 ## 升级与维护
 

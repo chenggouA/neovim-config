@@ -55,6 +55,13 @@ function M.setup()
 	map("n", "<leader>va", function()
 		require("core.python").activate_project_venv()
 	end, "激活项目 .venv 并重启 Pyright")
+
+	-- 类 VSCode 的编辑器历史导航：Alt+Left/Right 后退/前进
+	map("n", "<A-Left>", "<C-o>", "返回上一位置")
+	map("n", "<A-Right>", "<C-i>", "前进到下一位置")
+	-- 兼容部分终端把 Alt 识别为 Meta（M-）
+	map("n", "<M-Left>", "<C-o>", "返回上一位置 (M-)")
+	map("n", "<M-Right>", "<C-i>", "前进到下一位置 (M-)")
 end
 
 return M
