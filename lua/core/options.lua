@@ -61,6 +61,7 @@ end
 vim.o.clipboard = ""
 -- 设置代码折叠
 opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- 使用 Neovim 内置的 Tree-sitter 折叠表达式，避免旧函数在部分语言下无折叠的问题
+opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 opt.foldenable = false -- 默认不折叠，打开文件时是展开的
 opt.foldlevel = 99 -- 打开所有层级
