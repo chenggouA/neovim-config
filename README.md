@@ -71,6 +71,14 @@
 - `<leader>cf` 格式化当前缓冲区
 - `<leader>cd` 查看当前行诊断
 
+### 折叠
+- `<leader>zo`：展开所有折叠（等价 `zR`）
+- `<leader>zc`：折叠所有代码块（等价 `zM`）
+- `<leader>zt`：切换当前折叠状态（等价 `za`）
+- `<leader>zu`：展开当前折叠（等价 `zo`）
+- `<leader>zz`：折叠当前代码块（等价 `zc`）
+- 提示：默认使用 Tree-sitter 表达式折叠。需要手动折叠时，临时切换当前缓冲区为 `:setlocal foldmethod=manual` 后使用 `zf`。
+
 ### 调试（nvim-dap）
 - `<F5>`：继续/启动调试（等价 `<leader>dc`）
 - `<F10>`：单步跳过（等价 `<leader>dn`）

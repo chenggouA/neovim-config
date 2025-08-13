@@ -17,6 +17,7 @@ return {
 			{ "<leader>g", group = "Git ⑂" },
 			{ "<leader>q", group = "Quicknote 📝" },
 			{ "<leader>d", group = "调试 (DAP) 🐞" },
+			{ "<leader>z", group = "折叠 📐" },
 		})
 	end,
 }
