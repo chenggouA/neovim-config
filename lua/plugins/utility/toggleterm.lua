@@ -37,25 +37,37 @@ local function resolve_desired_cwd()
 end
 
 return {
-    "akinsho/toggleterm.nvim",
-    version = "*",
-    config = function()
-        require("toggleterm").setup({
-            size = 15,
-            open_mapping = [[<C-\>]],
-            hide_numbers = true,
-            shade_terminals = true,
-            start_in_insert = true,
-            persist_size = true,
-            direction = "horizontal",
-            close_on_exit = true,
+	"akinsho/toggleterm.nvim",
+	version = "*",
+	config = function()
+    require("toggleterm").setup({
+			size = 15,
+			open_mapping = [[<C-\>]],
+			hide_numbers = true,
+			shade_terminals = true,
+			start_in_insert = true,
+			persist_size = true,
+			direction = "horizontal",
+			close_on_exit = true,
             shell = utils.get_preferred_shell(),
-        })
+		})
 
-        local Terminal = require("toggleterm.terminal").Terminal
-        local term1 = Terminal:new({ count = 1, direction = "horizontal" })
-        local term2 = Terminal:new({ count = 2, direction = "horizontal" })
-        local float_term = Terminal:new({ direction = "float" })
+		local Terminal = require("toggleterm.terminal").Terminal
+        local function with_on_open(term)
+            term.on_open = function(t)
+                local python = require("core.python")
+                local cmd = python.activation_command()
+                if cmd and cmd ~= "" then
+                    t:send(cmd)
+                    t:send("\r")
+                end
+            end
+            return term
+        end
+
+        local term1 = with_on_open(Terminal:new({ count = 1, direction = "horizontal" }))
+        local term2 = with_on_open(Terminal:new({ count = 2, direction = "horizontal" }))
+        local float_term = with_on_open(Terminal:new({ direction = "float" }))
 
         -- 统一包装一个带 cwd 校准的切换函数
         local function toggle_with_cwd(term, size, direction)

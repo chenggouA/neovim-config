@@ -1,5 +1,6 @@
 ---@class CorePython
 local M = {}
+local utils = require("core.utils")
 
 ---Return the configured Python host interpreter, if any.
 ---@return string|nil
@@ -247,6 +248,36 @@ function M.restart_pyright()
             vim.cmd("edit")
         end
     end, 100)
+end
+
+---Build a shell command to activate the current venv in an interactive terminal.
+---Returns nil if no venv is active.
+---@return string|nil
+function M.activation_command()
+    local venv = M.get_venv()
+    if not venv or venv == "" then
+        return nil
+    end
+
+    local sep = package.config:sub(1, 1) == "\\" and "\\" or "/"
+    local shell = utils.get_preferred_shell()
+
+    -- Linux/macOS shells
+    if shell == "zsh" or shell == "bash" then
+        local activate = venv .. sep .. (sep == "\\" and "Scripts\\activate" or "bin/activate")
+        -- Only source when $VIRTUAL_ENV is set (it will be set by Neovim) to avoid accidental project picking
+        return string.format("[ -n \"$VIRTUAL_ENV\" ] && source \"%s\"", activate)
+    end
+
+    -- PowerShell (Windows)
+    if shell == "pwsh" or shell == "powershell" then
+        local activate_ps1 = venv .. "\\" .. "Scripts\\Activate.ps1"
+        return string.format("if ($env:VIRTUAL_ENV) { & \"%s\" }", activate_ps1)
+    end
+
+    -- Fallback: POSIX compatible
+    local activate = venv .. sep .. (sep == "\\" and "Scripts\\activate" or "bin/activate")
+    return string.format("[ -n \"$VIRTUAL_ENV\" ] && . \"%s\"", activate)
 end
 
 return M
