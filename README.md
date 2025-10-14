@@ -79,22 +79,6 @@
 - `<leader>zz`：折叠当前代码块（等价 `zc`）
 - 提示：默认使用 Tree-sitter 表达式折叠。需要手动折叠时，临时切换当前缓冲区为 `:setlocal foldmethod=manual` 后使用 `zf`。
 
-### 调试（nvim-dap）
-- `<F5>`：继续/启动调试（等价 `<leader>dc`）
-- `<F10>`：单步跳过（等价 `<leader>dn`）
-- `<F11>`：单步进入（等价 `<leader>di`）
-- `<S-F11>`：单步跳出（等价 `<leader>do`）
-- `<F9>`：切换断点（持久化）
-- `<leader>db`：切换断点（持久化）
-- `<leader>dB`：条件断点（持久化）
-- `<leader>dl`：日志点（持久化）
-- `<leader>du`：切换 DAP UI
-- `<leader>dp`：打开 DAP REPL
-- `<leader>dr`：重启调试会话
-- `<leader>dq`：退出调试
-- `<leader>de`：评估变量/表达式（在光标处）
-- `<leader>dL`：重新读取 `.vscode/launch.json`
-
 ### Git
 - `<leader>ge`：切换 Git 视图
 - `<leader>gd`：打开 Diffview
