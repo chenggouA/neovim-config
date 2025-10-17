@@ -19,7 +19,6 @@ return {
 
     config = function()
         require("core.keymaps.diagnostics").setup()
-        local lspconfig = require("lspconfig")
 
         --------------------------------------------------------------------------
         -- 公共 capabilities
@@ -40,7 +39,8 @@ return {
         ---@type CorePython
         local python = require("core.python")
 
-        lspconfig.pyright.setup({
+        -- 使用新的 vim.lsp.config API (Neovim 0.11+)
+        vim.lsp.config.pyright = {
             capabilities = capabilities,
             on_attach = on_attach,
 
@@ -113,7 +113,10 @@ return {
                     },
                 },
             },
-        })
+        }
+
+        -- 启用 Pyright LSP
+        vim.lsp.enable("pyright")
 
         --------------------------------------------------------------------------
         -- ② 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
