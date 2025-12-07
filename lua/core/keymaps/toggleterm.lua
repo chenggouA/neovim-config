@@ -34,13 +34,14 @@ function M.setup(term1, term2, float_term)
 		end
 	end
 
-	-- n/t 模式均可调用
-	vim.keymap.set({ "n", "t" }, "<leader>tq", kill_focused_toggleterm, { desc = "关闭当前 ToggleTerm (kill)" })
-	vim.keymap.set({ "n", "t" }, "<leader>tQ", kill_all_toggleterms, { desc = "关闭全部 ToggleTerm (kill all)" })
+	-- 只在 Normal mode 下使用 leader 键，避免 Terminal mode 下空格延迟
+	vim.keymap.set("n", "<leader>tq", kill_focused_toggleterm, { desc = "关闭当前 ToggleTerm (kill)" })
+	vim.keymap.set("n", "<leader>tQ", kill_all_toggleterms, { desc = "关闭全部 ToggleTerm (kill all)" })
 
-	vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true })
-	vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]])
-	vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
+	-- Terminal mode：使用 Esc 退出到 Normal mode，或用 Ctrl 快捷键
+	vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { noremap = true, desc = "退出终端模式" })
+	vim.keymap.set("t", "<C-h>", [[<C-\><C-n><C-w>h]], { desc = "切换到左侧窗口" })
+	vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]], { desc = "切换到右侧窗口" })
 end
 
 return M

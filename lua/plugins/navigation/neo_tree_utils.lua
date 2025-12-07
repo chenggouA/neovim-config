@@ -2,6 +2,13 @@ local M = {}
 
 -- 找项目根的辅助函数（模块私有）
 local function project_root_from(buf)
+  -- 检查是否是 terminal buffer
+  local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+  if buftype == "terminal" then
+    -- Terminal buffer：使用 vim 的当前工作目录
+    return vim.loop.cwd()
+  end
+
   local file = vim.api.nvim_buf_get_name(buf)
   if file == "" then
     return vim.loop.cwd()
