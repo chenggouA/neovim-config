@@ -84,14 +84,14 @@ return {
         -- 覆盖/补充键位：打开前设置到 neo-tree 根目录
         vim.keymap.set("n", "<leader>t1", function()
           toggle_with_cwd(term1)
-        end, { desc = "切换终端 1（跟随 neo-tree 根）" })
+        end, { desc = "切换终端 1" })
 
         vim.keymap.set("n", "<leader>t2", function()
           toggle_with_cwd(term2)
-        end, { desc = "切换终端 2（跟随 neo-tree 根）" })
+        end, { desc = "切换终端 2" })
 
         vim.keymap.set("n", "<leader>tf", function()
           toggle_with_cwd(float_term)
-        end, { desc = "浮动终端（跟随 neo-tree 根）" })
+        end, { desc = "浮动终端" })
     end,
 }

@@ -9,7 +9,7 @@ return {
         {
             "mason-org/mason-lspconfig.nvim",
             opts = {
-                ensure_installed = { "pyright", "clangd"},
+                ensure_installed = { "pyright"},
                 automatic_enable = false, -- 不自动启动
                 automatic_installation = true,
             },

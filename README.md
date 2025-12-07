@@ -39,53 +39,26 @@
 - `lua/core/`：核心配置，如选项、工具函数、Python 支持等
 - `lua/plugins/`：插件定义与自定义配置
 
-## 快捷键速查表
+## 快捷键
 
-> 空格键为全局 `<leader>`
+> Leader 键：`Space`（空格）
 
-### 常用
-- `<leader>e`：切换 Neo-tree
-- `<leader>bd`：关闭当前 buffer
-- `<leader>wq`：退出 Neovim
+完整的快捷键速查表请查看：**[KEYMAPS.md](KEYMAPS.md)**
 
-### 导航
-- `<A-Left>` / `<A-Right>`：编辑器历史后退 / 前进（等价 `<C-o>` / `<C-i>`，类 VSCode 体验）
+### 常用快捷键
 
-### 窗口与终端
-- `<C-h/j/k/l>`：窗口间移动
-- `<A-h/j/k/l>`：调整窗口大小
-- `<C-\>`：打开/关闭终端
-- `<leader>t1`/`<leader>t2`：切换终端 1/2
-
-### 文件与搜索
-- `<leader>ff`：查找文件
-- `<leader>fg`：全局搜索（依赖 `ripgrep`）
-
-### LSP
-- `gd` 跳转到定义
-- `gr` 查找引用
-- `<leader>rn` 重命名
-
-### 代码操作
-- `<leader>ca` 代码操作
-- `<leader>cf` 格式化当前缓冲区
-- `<leader>cd` 查看当前行诊断
-
-### 折叠
-- `<leader>zo`：展开所有折叠（等价 `zR`）
-- `<leader>zc`：折叠所有代码块（等价 `zM`）
-- `<leader>zt`：切换当前折叠状态（等价 `za`）
-- `<leader>zu`：展开当前折叠（等价 `zo`）
-- `<leader>zz`：折叠当前代码块（等价 `zc`）
-- 提示：默认使用 Tree-sitter 表达式折叠。需要手动折叠时，临时切换当前缓冲区为 `:setlocal foldmethod=manual` 后使用 `zf`。
-
-### Git
-- `<leader>ge`：切换 Git 视图
-- `<leader>gd`：打开 Diffview
-
-### Quicknote
-- `<leader>qn`：新建当前行笔记
-- `<leader>ql`：列出所有笔记
+| 功能 | 快捷键 |
+|------|--------|
+| 文件树 | `<leader>e` |
+| 查找文件 | `<leader>ff` |
+| 全局搜索 | `<leader>fg` |
+| 新建标签页 | `<A-t>` |
+| 切换标签页 | `<A-h>` / `<A-l>` |
+| 关闭标签页 | `<A-w>` |
+| 跳转定义 | `gd` |
+| 格式化代码 | `<leader>cf` |
+| 打开终端 | `<C-\>` |
+| 保存并退出 | `<leader>wq` |
 
 ## 常见问题 / 排错
 

@@ -15,18 +15,31 @@ end
 
 function M.get_preferred_shell()
 	if vim.fn.has("win32") == 1 then
-		-- 优先使用 pwsh (PowerShell 7+)，如果它在系统 PATH 中
+		-- Windows: 优先使用 pwsh (PowerShell 7+)
 		if vim.fn.executable("pwsh") == 1 then
 			return "pwsh"
 		else
-			-- 否则回退到 Windows PowerShell
 			return "powershell"
 		end
 	else
+		-- Unix-like 系统：优先使用用户的默认 shell ($SHELL)
+		local user_shell = vim.env.SHELL
+		if user_shell and user_shell ~= "" then
+			-- 提取 shell 名称（去掉路径）
+			local shell_name = vim.fn.fnamemodify(user_shell, ":t")
+			-- 验证该 shell 是否可执行
+			if vim.fn.executable(shell_name) == 1 or vim.fn.executable(user_shell) == 1 then
+				return user_shell
+			end
+		end
+
+		-- 回退：依次尝试常见 shell
 		if vim.fn.executable("zsh") == 1 then
 			return "zsh"
-		else
+		elseif vim.fn.executable("bash") == 1 then
 			return "bash"
+		else
+			return "sh"
 		end
 	end
 end

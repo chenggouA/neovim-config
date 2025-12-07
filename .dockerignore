@@ -1,0 +1,31 @@
+# Git files
+.git/
+.gitignore
+
+# Neovim runtime
+lazy-lock.json
+.luarc.json
+
+# Lazy.nvim plugin directory (will be re-downloaded)
+lazy/
+
+# Mason LSP binaries (will be re-installed)
+mason/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+*.log
+
+# Documentation (optional, remove if you want docs)
+README.md
+LICENSE
+
+# Docker files themselves
+Dockerfile
+.dockerignore
+docker-compose.yml

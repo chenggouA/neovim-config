@@ -19,13 +19,19 @@ opt.autoindent = true -- 新行默认继承上一行的缩进
 -- 其他体验设置
 opt.cursorline = true -- 高亮当前行，提升可读性
 
+-- 键位映射超时时间
+-- 减少 leader 键延迟，按下空格后等待后续按键的时间（毫秒）
+-- 默认值 1000ms 太长，300-500ms 是比较合适的平衡值
+opt.timeoutlen = 300 -- 等待按键序列完成的时间
+opt.ttimeoutlen = 10 -- 等待键码序列完成的时间（影响 Esc 响应速度）
+
 -- 启用鼠标，便于在终端中拖动和选择文本
 opt.mouse:append("a") -- 在所有模式下都支持鼠标操作
 
 -- 外观相关
 opt.termguicolors = true -- 开启真彩色，配合主题使用效果更佳
 opt.signcolumn = "yes" -- 始终显示左侧的符号列，避免文本跳动
-vim.g.neovide_opacity = 0.8 -- 0~1，推荐 0.75~0.9
+vim.g.neovide_opacity = 0.4 -- 0~1，推荐 0.75~0.9
 vim.g.neovide_background_color = "#0f1117" .. string.format("%x", math.floor(255 * 0.8))
 vim.g.neovide_floating_blur_amount_x = 2.0
 vim.g.neovide_floating_blur_amount_y = 2.0

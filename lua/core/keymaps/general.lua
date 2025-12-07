@@ -62,6 +62,17 @@ function M.setup()
 	-- 兼容部分终端把 Alt 识别为 Meta（M-）
 	map("n", "<M-Left>", "<C-o>", "返回上一位置 (M-)")
 	map("n", "<M-Right>", "<C-i>", "前进到下一位置 (M-)")
+
+	-- 标签页管理（Alt 系列）
+	map("n", "<A-t>", "<cmd>tabnew<CR>", "新建标签页")
+	map("n", "<A-w>", "<cmd>tabclose<CR>", "关闭当前标签页")
+	map("n", "<A-h>", "<cmd>tabprev<CR>", "上一个标签页")
+	map("n", "<A-l>", "<cmd>tabnext<CR>", "下一个标签页")
+
+	-- 快速跳转到指定标签页（Alt + 1-9）
+	for i = 1, 9 do
+		map("n", "<A-" .. i .. ">", i .. "gt", "跳转到标签页 " .. i)
+	end
 end
 
 return M
