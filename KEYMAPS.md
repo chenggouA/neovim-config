@@ -132,6 +132,28 @@
 
 ---
 
+## CMake
+
+| 快捷键 | 功能 |
+|--------|------|
+| `<leader>mg` | CMake 生成/配置 |
+| `<leader>mb` | CMake 构建 |
+| `<leader>mr` | CMake 运行 |
+| `<leader>mc` | CMake 清理 |
+| `<leader>mt` | 选择构建目标 |
+| `<leader>ml` | 选择运行目标 |
+| `<leader>mp` | 选择构建预设 |
+| `<leader>ms` | 停止 CMake |
+
+### 典型工作流程
+1. `<leader>mg` - 配置项目（首次或修改 CMakeLists.txt 后）
+2. `<leader>mt` - 选择要构建的目标
+3. `<leader>mb` - 构建选定的目标
+4. `<leader>ml` - 选择要运行的目标（如果有多个可执行文件）
+5. `<leader>mr` - 运行程序
+
+---
+
 ## 终端（ToggleTerm）
 
 | 快捷键 | 功能 |
@@ -170,25 +192,6 @@
 | `<leader>zt` | 切换当前折叠状态 | `za` |
 | `<leader>zu` | 展开当前折叠 | `zo` |
 | `<leader>zz` | 折叠当前代码块 | `zc` |
-
----
-
-## Quicknote（项目笔记）
-
-| 快捷键 | 功能 |
-|--------|------|
-| `<leader>qn` | 新建当前行笔记 |
-| `<leader>qN` | 新建项目笔记 |
-| `<leader>qo` | 打开当前行笔记 |
-| `<leader>ql` | 列出所有笔记 |
-| `<leader>qj` | 跳转到下一条笔记 |
-| `<leader>qk` | 跳转到上一条笔记 |
-| `<leader>qs` | 显示笔记标记 |
-| `<leader>qS` | 隐藏笔记标记 |
-| `<leader>qd` | 删除当前行笔记 |
-| `<leader>qD` | 删除项目笔记 |
-| `<leader>qi` | 导入项目笔记 |
-| `<leader>qe` | 导出项目笔记 |
 
 ---
 
@@ -231,7 +234,7 @@
 | `<leader>e` | 文件树（Explorer） |
 | `<leader>f` | 查找（Find/Search） |
 | `<leader>g` | Git 操作 |
-| `<leader>q` | Quicknote 笔记 |
+| `<leader>m` | CMake 构建 |
 | `<leader>r` | 重命名/窗口调整（Rename/Resize） |
 | `<leader>t` | 终端（Terminal） |
 | `<leader>v` | Python 虚拟环境（Venv） |

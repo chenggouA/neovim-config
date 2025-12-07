@@ -29,7 +29,7 @@ This is a Neovim configuration written in Lua, using lazy.nvim as the plugin man
      - `appearance/`: UI plugins (themes, statusline, transparency)
      - `dev/`: Development tools (LSP, completion, formatters, treesitter)
      - `navigation/`: File tree, telescope, window management
-     - `utility/`: Terminal, notes, auto-save
+     - `utility/`: Terminal, auto-save
      - `git/`: Git integration (fugitive, gitsigns, diffview)
 
 ### Python Environment Management

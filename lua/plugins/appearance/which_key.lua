@@ -15,7 +15,7 @@ return {
 			{ "<leader>b", group = "Buffer 📄" },
 			{ "<leader>w", group = "Window ❌" },
 			{ "<leader>g", group = "Git ⑂" },
-			{ "<leader>q", group = "Quicknote 📝" },
+			{ "<leader>m", group = "CMake 🔨" },
 			{ "<leader>z", group = "折叠 📐" },
 		})
 	end,

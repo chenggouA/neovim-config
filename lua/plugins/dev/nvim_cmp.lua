@@ -8,7 +8,8 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		{
 			"L3MON4D3/LuaSnip",
-			build = (vim.fn.has("win32") == 1) and nil or "make install_jsregexp",
+			-- 禁用原生编译，避免 macOS 编译问题
+			build = nil,
 			dependencies = { "rafamadriz/friendly-snippets" },
 			opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 		},
