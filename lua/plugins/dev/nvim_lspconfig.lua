@@ -9,7 +9,7 @@ return {
         {
             "mason-org/mason-lspconfig.nvim",
             opts = {
-                ensure_installed = { "pyright"},
+                ensure_installed = { "pyright", "clangd"},
                 automatic_enable = false, -- 不自动启动
                 automatic_installation = true,
             },
@@ -18,6 +18,7 @@ return {
     },
 
     config = function()
+        -- 加载诊断快捷键配置
         require("core.keymaps.diagnostics").setup()
 
         --------------------------------------------------------------------------
@@ -119,7 +120,34 @@ return {
         vim.lsp.enable("pyright")
 
         --------------------------------------------------------------------------
-        -- ② 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
+        -- ② clangd ─ C/C++ LSP
+        --------------------------------------------------------------------------
+        vim.lsp.config.clangd = {
+            capabilities = capabilities,
+            on_attach = on_attach,
+
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--clang-tidy",
+                "--completion-style=detailed",
+                "--header-insertion=iwyu",
+            },
+
+            filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
+
+            root_dir = vim.fs.root(0, {
+                "compile_commands.json",
+                "compile_flags.txt",
+                ".git",
+            }),
+        }
+
+        -- 启用 clangd
+        vim.lsp.enable("clangd")
+
+        --------------------------------------------------------------------------
+        -- ③ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
         --    如需 Ruff 诊断/Code Action，可在此重新启用
         --------------------------------------------------------------------------
     end,
