@@ -9,11 +9,14 @@ return {
         {
             "mason-org/mason-lspconfig.nvim",
             opts = {
-                ensure_installed = { "pyright"},
+                ensure_installed = { "pyright", "jsonls" },
                 automatic_enable = false, -- 不自动启动
                 automatic_installation = true,
             },
         },
+
+        -- JSON schemas for jsonls
+        { "b0o/schemastore.nvim", lazy = true },
 
     },
 
@@ -147,7 +150,25 @@ return {
         vim.lsp.enable("clangd")
 
         --------------------------------------------------------------------------
-        -- ③ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
+        -- ③ jsonls ─ JSON LSP (语法检查、schema 验证)
+        --------------------------------------------------------------------------
+        vim.lsp.config.jsonls = {
+            capabilities = capabilities,
+            on_attach = on_attach,
+
+            settings = {
+                json = {
+                    schemas = require("schemastore").json.schemas(),
+                    validate = { enable = true },
+                },
+            },
+        }
+
+        -- 启用 jsonls
+        vim.lsp.enable("jsonls")
+
+        --------------------------------------------------------------------------
+        -- ④ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
         --    如需 Ruff 诊断/Code Action，可在此重新启用
         --------------------------------------------------------------------------
     end,

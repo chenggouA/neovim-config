@@ -57,10 +57,12 @@ Keymaps are split across multiple files in `lua/core/keymaps/`:
 ### LSP Configuration
 
 LSP is configured in `lua/plugins/dev/nvim_lspconfig.lua`:
-- Mason auto-installs language servers (currently only `pyright`)
+- Mason auto-installs language servers: `pyright` (Python), `jsonls` (JSON), `clangd` (C/C++)
 - Shared `capabilities` from nvim-cmp
 - Shared `on_attach` function loads LSP keymaps from `core.keymaps.lsp`
-- Pyright gets special handling for Python venvs (see Python section above)
+- **Pyright** gets special handling for Python venvs (see Python section above)
+- **jsonls** uses schemastore.nvim for automatic schema validation (package.json, tsconfig.json, etc.)
+- **clangd** configured with background indexing, clang-tidy, and IWYU header insertion
 
 ### Formatting
 
@@ -69,6 +71,7 @@ Formatting is handled by conform.nvim (`lua/plugins/dev/conform.lua`):
 - **JSON**: jq
 - **Markdown**: prettier
 - **Python**: ruff (fix → format pipeline)
+- **C/C++**: (managed by clangd LSP)
 - Triggered manually via `<leader>cf` (defined in `core.keymaps.conform`)
 
 ## Key Commands
@@ -130,6 +133,7 @@ Formatting is handled by conform.nvim (`lua/plugins/dev/conform.lua`):
 - **Fold method**: Tree-sitter expressions (`foldmethod=expr`, `foldexpr=v:lua.vim.treesitter.foldexpr()`)
 - **Clipboard**: Not synced with system by default (use `<leader>y` / `<leader>p` for system clipboard)
 - **Font** (Neovide): JetBrainsMono Nerd Font, size 14
+- **Exit shortcuts**: Use Vim native `ZZ` (save & quit) and `ZQ` (quit without save)
 - **Python type checking**: Pyright with `typeCheckingMode = "basic"`
 
 ## External Dependencies

@@ -27,23 +27,6 @@ function M.setup()
 	-- 只保留当前窗口
 	map("n", "<leader>wo", "<cmd>only<CR>", "关闭其他窗口")
 
-	-- 退出 Neovim（写出 \ 保存）
-	map("n", "<leader>wQ", "<cmd>qa!<CR>", "强制退出全部")
-
-	-- 智能退出 Neovim（保存 + 关闭终端 buffer + 强制退出）
-	map("n", "<leader>wq", function()
-		pcall(vim.cmd, "wa") -- 保存所有文件
-
-		-- 强制删除 terminal 和 nofile 类型的 buffer，防止 job 阻止退出
-		for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-			local bt = vim.api.nvim_buf_get_option(buf, "buftype")
-			if bt == "terminal" or bt == "nofile" then
-				pcall(vim.cmd, "bdelete! " .. buf)
-			end
-		end
-
-		vim.cmd("qa!") -- 强制退出
-	end, "保存并退出 Neovim")
 	-- 折叠相关快捷键（leader z）
 	map("n", "<leader>zo", "zR", "展开所有折叠")
 	map("n", "<leader>zc", "zM", "折叠所有代码块")
