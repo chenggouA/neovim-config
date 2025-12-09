@@ -29,6 +29,7 @@
 | `ZQ` | 不保存直接退出 | `:q!` |
 
 💡 **提示**：
+- **使用 `ZZ` 或 `ZQ` 退出前，需要先手动关闭 Neo-tree**（在 Neo-tree 中按 `q`），否则会提示无法退出
 - 多窗口时可用 `:wqa`（保存所有并退出）或 `:qa!`（强制退出所有）
 - Neovide/GUI：使用 `Cmd+Q` (macOS) 或 `Alt+F4` (Linux/Windows) 退出客户端
 
