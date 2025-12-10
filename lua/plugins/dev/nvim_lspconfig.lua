@@ -29,7 +29,6 @@ return {
         --------------------------------------------------------------------------
         local ok_cmp, cmp_lsp = pcall(require, "cmp_nvim_lsp")
         local capabilities = ok_cmp and cmp_lsp.default_capabilities() or vim.lsp.protocol.make_client_capabilities()
-        capabilities.offsetEncoding = { "utf-16" }
 
         local on_attach = function(client, bufnr)
             local ok, lsp_keys = pcall(require, "core.keymaps.lsp")

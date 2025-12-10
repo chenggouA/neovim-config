@@ -45,8 +45,8 @@ if vim.g.neovide then
 
 	-- 性能优化
 	vim.g.neovide_refresh_rate = 60 -- 刷新率，配合 --no-vsync 使用
-	vim.g.neovide_scroll_animation_length = 0.2 -- 滚动动画时长，默认 0.3
-	vim.g.neovide_cursor_animation_length = 0.05 -- 光标动画时长，默认 0.13
+	vim.g.neovide_scroll_animation_length = 0.3 -- 滚动动画时长
+	vim.g.neovide_cursor_animation_length = 0.13 -- 光标动画时长
 
 	-- 光标效果
 	vim.g.neovide_cursor_trail_size = 0.8 -- 光标轨迹长度 0~1
@@ -54,9 +54,9 @@ if vim.g.neovide then
 	vim.g.neovide_cursor_animate_in_insert_mode = true -- 插入模式光标动画
 	vim.g.neovide_cursor_animate_command_line = true -- 命令行模式光标动画
 	vim.g.neovide_cursor_smooth_blink = true -- 光标平滑闪烁过渡
-	vim.g.neovide_cursor_vfx_mode = "railgun" -- 光标粒子特效：railgun（轨道炮）
-	vim.g.neovide_cursor_vfx_particle_lifetime = 1.2 -- 粒子生命周期
-	vim.g.neovide_cursor_vfx_particle_density = 7.0 -- 粒子密度
+	vim.g.neovide_cursor_vfx_mode = "torpedo" -- 光标粒子特效：torpedo（鱼雷，更柔和）
+	vim.g.neovide_cursor_vfx_particle_lifetime = 0.5 -- 粒子生命周期（降低以减少视觉干扰）
+	vim.g.neovide_cursor_vfx_particle_density = 3.0 -- 粒子密度（降低以减少视觉干扰）
 
 	-- 用户体验优化
 	vim.g.neovide_input_ime = true -- 支持中文输入法（macOS 重要）

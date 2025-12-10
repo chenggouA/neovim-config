@@ -6,6 +6,7 @@ return {
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"saadparwaiz1/cmp_luasnip",
+		"Exafunction/codeium.nvim", -- Codeium AI 补全
 		{
 			"L3MON4D3/LuaSnip",
 			-- 禁用原生编译，避免 macOS 编译问题
@@ -25,8 +26,16 @@ return {
 					luasnip.lsp_expand(args.body)
 				end,
 			},
+			completion = {
+				completeopt = "menu,menuone,noselect",
+				autocomplete = {
+					require("cmp.types").cmp.TriggerEvent.TextChanged,
+					require("cmp.types").cmp.TriggerEvent.InsertEnter,
+				},
+			},
 			mapping = require("core.keymaps.cmp").mapping(cmp, luasnip),
 			sources = cmp.config.sources({
+				{ name = "codeium" }, -- AI 补全（最高优先级）
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 			}, {
@@ -41,6 +50,7 @@ return {
 				fields = { "abbr", "kind", "menu" },
 				format = function(entry, vim_item)
 					local menus = {
+						codeium = "[AI]",
 						nvim_lsp = "[LSP]",
 						luasnip = "[Snip]",
 						buffer = "[Buf]",
