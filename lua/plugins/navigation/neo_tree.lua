@@ -75,5 +75,15 @@ return {
 				},
 			},
 		})
+
+		-- VSCode 风格的 Git 文件状态配色
+		vim.api.nvim_set_hl(0, "NeoTreeGitUntracked", { fg = "#73C991" })  -- 绿色（未追踪）
+		vim.api.nvim_set_hl(0, "NeoTreeGitModified", { fg = "#E5C07B" })   -- 黄色（修改）
+		vim.api.nvim_set_hl(0, "NeoTreeGitAdded", { fg = "#98C379" })      -- 亮绿（新增）
+		vim.api.nvim_set_hl(0, "NeoTreeGitDeleted", { fg = "#E06C75" })    -- 红色（删除）
+		vim.api.nvim_set_hl(0, "NeoTreeGitRenamed", { fg = "#61AFEF" })    -- 蓝色（重命名）
+		vim.api.nvim_set_hl(0, "NeoTreeGitConflict", { fg = "#E06C75" })   -- 红色（冲突）
+		vim.api.nvim_set_hl(0, "NeoTreeGitIgnored", { fg = "#5C6370" })    -- 灰色（忽略）
+		vim.api.nvim_set_hl(0, "NeoTreeGitStaged", { fg = "#98C379" })     -- 绿色（暂存）
 	end,
 }
