@@ -10,7 +10,7 @@
 - 内置 [tree-sitter](https://tree-sitter.github.io/tree-sitter/) 语法高亮
 - [neo-tree](https://github.com/nvim-neo-tree/neo-tree.nvim) 文件树与 Git 视图
 - LSP 与自动补全：`nvim-lspconfig`、`nvim-cmp` 等
-- 内置终端、项目笔记（Quicknote）等增强工具
+- 内置终端、文件搜索等增强工具
 
 ## 先决条件
 
@@ -64,7 +64,6 @@
 
 - **tree-sitter 编译失败**：确认已安装 GCC/Clang 等 C 编译器。
 - **系统剪贴板未同步**：默认不与系统剪贴板共享，可使用 `<leader>y` 复制、`<leader>p` 粘贴。
-- **Alt 方向键无效（tmux）**：在 `~/.tmux.conf` 中加入 `set -g xterm-keys on`，重启 tmux。
 
 ## 升级与维护
 
