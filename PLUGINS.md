@@ -60,7 +60,7 @@
 
 ### nvim-lspconfig
 **仓库**: `neovim/nvim-lspconfig`
-**作用**: LSP 客户端配置，支持 Pyright (Python)、clangd (C/C++)、jsonls (JSON)
+**作用**: LSP 客户端配置，支持 Pyright (Python)、clangd (C/C++)、jsonls (JSON)、marksman (Markdown)
 
 ### tiny-inline-diagnostic.nvim
 **仓库**: `rachartier/tiny-inline-diagnostic.nvim`
@@ -92,7 +92,7 @@
 
 ---
 
-## 实用工具（Utility）
+## 实用工具（Utility） 
 
 ### auto-save.nvim
 **仓库**: `pocco81/auto-save.nvim`

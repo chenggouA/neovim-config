@@ -17,7 +17,34 @@
 - **Neovim** ≥ 0.9
 - 推荐安装 [Nerd Fonts](https://www.nerdfonts.com/) 中的 **JetBrainsMono** 字体
 - 系统需提供 **C 编译器**（tree-sitter 构建使用）
-- 可选格式化器：`stylua`、`ruff`/`ruff-lsp`、`prettier`、`jq`、`ruff-lua`
+- **ripgrep** (可选，用于 Telescope 全局搜索)
+
+## 外部依赖
+
+### LSP 服务器（自动安装）
+
+以下 LSP 服务器会通过 Mason 自动安装：
+- **pyright** (Python)
+- **jsonls** (JSON)
+- **marksman** (Markdown)
+
+**注意**：`clangd` (C/C++) 在 ARM Mac 上需要手动安装：
+```bash
+brew install llvm
+# 或
+sudo apt install clangd
+```
+
+### 格式化工具（按需安装）
+
+代码格式化工具需通过 `:Mason` 手动安装，或使用系统包管理器：
+
+| 工具 | 用途 | 安装方式 |
+|------|------|---------|
+| **stylua** | Lua 格式化 | `:Mason` 搜索安装，或 `brew install stylua` |
+| **prettier** | Markdown/JSON/YAML | `:Mason` 搜索安装，或 `npm install -g prettier` |
+| **jq** | JSON 格式化 | `:Mason` 搜索安装，或 `brew install jq` |
+| **ruff** | Python 格式化 | `:Mason` 搜索安装，或 `pip install ruff` |
 
 ## 快速上手
 
@@ -44,21 +71,6 @@
 > Leader 键：`Space`（空格）
 
 完整的快捷键速查表请查看：**[KEYMAPS.md](KEYMAPS.md)**
-
-### 常用快捷键
-
-| 功能 | 快捷键 |
-|------|--------|
-| 文件树 | `<leader>e` |
-| 查找文件 | `<leader>ff` |
-| 全局搜索 | `<leader>fg` |
-| 新建标签页 | `<A-t>` |
-| 切换标签页 | `<A-[>` / `<A-]>` |
-| 关闭标签页 | `<A-w>` |
-| 跳转定义 | `gd` |
-| 格式化代码 | `<leader>cf` |
-| 打开终端 | `<C-\>` |
-| 保存并退出 | `<leader>wq` |
 
 ## 常见问题 / 排错
 
