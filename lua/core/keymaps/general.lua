@@ -47,7 +47,6 @@ function M.setup()
 	map("n", "<M-Right>", "<C-i>", "前进到下一位置 (M-)")
 
 	-- 标签页管理（Alt 系列）
-	map("n", "<A-t>", "<cmd>tabnew<CR>", "新建标签页")
 	map("n", "<A-w>", "<cmd>tabclose<CR>", "关闭当前标签页")
 	map("n", "<A-[>", "<cmd>tabprev<CR>", "上一个标签页")
 	map("n", "<A-]>", "<cmd>tabnext<CR>", "下一个标签页")

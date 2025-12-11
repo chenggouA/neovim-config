@@ -6,6 +6,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
 		"nvim-tree/nvim-web-devicons",
+		"s1n7ax/nvim-window-picker",
 	},
 
        keys = require("core.keymaps.neo_tree").keys,
@@ -20,23 +21,7 @@ return {
 			window = {
 				position = "left",
 				width = 30,
-				mappings = {
-					-- ── 迁移自 nvim-tree ──
-					["l"] = "open", -- 打开
-					["h"] = "close_node", -- 收起
-					["v"] = "open_vsplit", -- 垂直分屏
-					["a"] = "add", -- 新建
-					["r"] = "rename", -- 重命名
-					["d"] = "delete", -- 删除
-					["y"] = "copy_to_clipboard", -- 复制
-					["x"] = "cut_to_clipboard", -- 剪切
-					["p"] = "paste_from_clipboard", -- 粘贴
-					["R"] = "refresh", -- 刷新
-					["q"] = "close_window", -- 关闭侧边栏
-					["<Tab>"] = "preview", -- 预览
-					["i"] = "set_root", -- 设为根目录
-					["u"] = "navigate_up", -- 回到上级
-				},
+				-- 使用 Neo-tree 默认映射（无自定义）
 			},
 
 			-- ✨ 文件系统设置
