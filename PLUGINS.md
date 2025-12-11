@@ -110,9 +110,9 @@
 
 ## Git 集成（Git）
 
-### vim-fugitive
-**仓库**: `tpope/vim-fugitive`
-**作用**: Git 命令集成，支持 diff、merge、blame 等操作
+### diffview.nvim
+**仓库**: `sindrets/diffview.nvim`
+**作用**: 现代化 Git diff 和三路合并工具，提供单标签页界面查看文件差异、提交历史和解决合并冲突
 
 ### gitsigns.nvim
 **仓库**: `lewis6991/gitsigns.nvim`

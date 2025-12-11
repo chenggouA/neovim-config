@@ -1,5 +1,10 @@
 local opt = vim.opt
 
+-- 编码设置（必须在最开始设置，确保所有插件正确处理字符）
+opt.encoding = "utf-8" -- Neovim 内部编码
+opt.fileencoding = "utf-8" -- 新建文件的默认编码
+opt.fileencodings = "utf-8,gbk,gb2312,big5" -- 自动检测文件编码顺序
+
 -- 行号设置
 -- 同时开启相对行号和绝对行号，
 -- 相对行号便于配合数字做跳转，
