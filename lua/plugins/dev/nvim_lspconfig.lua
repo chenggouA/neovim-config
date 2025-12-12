@@ -125,6 +125,8 @@ return {
                 "--clang-tidy",
                 "--completion-style=detailed",
                 "--header-insertion=iwyu",
+                "--header-insertion-decorators",
+                "--inlay-hints",
             },
 
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },

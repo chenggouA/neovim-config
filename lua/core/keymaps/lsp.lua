@@ -1,6 +1,11 @@
 local M = {}
 
-function M.on_attach(_, bufnr)
+function M.on_attach(client, bufnr)
+	-- 启用 inlay hints (Neovim 0.10.0+)
+	if client.server_capabilities.inlayHintProvider and vim.lsp.inlay_hint then
+		vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+	end
+
 	local map = function(mode, lhs, rhs, desc)
 		vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, desc = desc })
 	end
