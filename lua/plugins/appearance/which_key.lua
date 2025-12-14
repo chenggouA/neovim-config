@@ -4,19 +4,25 @@ return {
 	opts = {
 		win = { border = "rounded" },
 		layout = { spacing = 6, align = "center" },
+		icons = {
+			mappings = false, -- 禁用自动图标
+		},
 	},
 	config = function(_, opts)
 		local wk = require("which-key")
 		wk.setup(opts)
 		wk.add({
-			{ "<leader>c", group = "代码操作 💻" },
-			{ "<leader>f", group = "Find 🔍" },
-			{ "<leader>t", group = "Terminal 🖥️" },
-			{ "<leader>b", group = "Buffer 📄" },
-			{ "<leader>w", group = "Window ❌" },
-			{ "<leader>g", group = "Git ⑂" },
-			{ "<leader>m", group = "CMake 🔨" },
-			{ "<leader>z", group = "折叠 📐" },
+			-- 键位组
+			{ "<leader>c", group = "代码" },
+			{ "<leader>d", group = "Diff" },
+			{ "<leader>f", group = "查找" },
+			{ "<leader>g", group = "Git" },
+			{ "<leader>m", group = "CMake" },
+			{ "<leader>r", group = "调整" },
+			{ "<leader>t", group = "终端" },
+			{ "<leader>v", group = "Venv" },
+			{ "<leader>w", group = "窗口" },
+			{ "<leader>z", group = "折叠" },
 		})
 	end,
 }

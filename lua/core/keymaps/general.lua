@@ -7,9 +7,6 @@ function M.setup()
 		vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
 	end
 
-	-- 缓冲区管理
-	map("n", "<leader>bd", "<cmd>bdelete<CR>", "关闭当前 buffer")
-
 	-- 使用 <leader>y 将选中文本复制到系统剪贴板
 	map({ "n", "v" }, "<leader>y", '"+y', "复制到系统剪贴板")
 
