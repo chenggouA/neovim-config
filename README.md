@@ -6,6 +6,7 @@
 
 ## 主要特性与插件
 
+- 🐬 **启动面板**：alpha-nvim 启动界面，海豚 ASCII 艺术，快捷操作菜单
 - 🎨 **外观**：One Dark Pro 主题，透明背景支持，which-key 快捷键提示
 - 🔧 **开发工具**：LSP (Pyright/clangd/jsonls/marksman)，智能补全，AI 辅助 (Codeium)
 - 📂 **导航**：neo-tree 文件树，Telescope 模糊搜索，Flash 快速跳转

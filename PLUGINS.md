@@ -6,6 +6,10 @@
 
 ## 外观（Appearance）
 
+### alpha-nvim
+**仓库**: `goolord/alpha-nvim`
+**作用**: 启动面板，显示海豚 ASCII 艺术、快捷操作菜单和名言
+
 ### onedarkpro.nvim
 **仓库**: `olimorris/onedarkpro.nvim`
 **作用**: One Dark 配色方案，提供统一的主题颜色
@@ -174,8 +178,8 @@
 
 ## 统计
 
-**总计**: 32 个插件
-- 外观: 5 个
+**总计**: 33 个插件
+- 外观: 6 个
 - 开发工具: 18 个
 - 导航: 5 个
 - 实用工具: 3 个
