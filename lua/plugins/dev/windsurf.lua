@@ -9,18 +9,14 @@ return {
 		vim.opt.encoding = "utf-8"
 
 		require("codeium").setup({
-			enable_cmp_source = true, -- 启用 cmp 补全源
+			enable_cmp_source = true, -- 启用 cmp 补全源（在补全菜单中显示）
 			virtual_text = {
-				enabled = true, -- 同时启用虚拟文本补全（灰色幽灵文字）
+				enabled = true, -- 启用虚拟文本补全（灰色内联建议）
 				key_bindings = {
-					-- 如果 cmp 菜单未显示，Tab 会接受虚拟文本
-					-- 如果 cmp 菜单显示，Tab 会确认 cmp 选项（优先级更高）
-					accept = "<Tab>",
-					-- 或者你也可以用 Ctrl+Y 单独接受虚拟文本：
-					-- accept = "<C-y>",
-					next = "<M-]>", -- Alt+] 切换到下一个 AI 建议
-					prev = "<M-[>", -- Alt+[ 切换到上一个 AI 建议
-					clear = "<C-]>", -- Ctrl+] 清除虚拟文本
+					accept = "<Tab>", -- Tab 接受虚拟文本（无虚拟文本时插入 Tab）
+					next = "<M-j>", -- Alt+j 切换到下一个 AI 建议
+					prev = "<M-k>", -- Alt+k 切换到上一个 AI 建议
+					clear = "<M-e>", -- Alt+e 清除虚拟文本
 				},
 			},
 		})
