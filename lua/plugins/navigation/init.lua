@@ -5,4 +5,5 @@ return {
 	require("plugins.navigation.neo_tree"),
 	require("plugins.navigation.window_picker"),
 	require("plugins.navigation.flash"),
+	require("plugins.navigation.project"),
 }

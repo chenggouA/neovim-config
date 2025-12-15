@@ -6,10 +6,10 @@
 
 ## 主要特性与插件
 
-- 🐬 **启动面板**：alpha-nvim 启动界面，海豚 ASCII 艺术，快捷操作菜单
+- 🐬 **启动面板**：alpha-nvim 启动界面，海豚 ASCII 艺术，最近项目快速访问
 - 🎨 **外观**：One Dark Pro 主题，透明背景支持，which-key 快捷键提示
 - 🔧 **开发工具**：LSP (Pyright/clangd/jsonls/marksman)，智能补全，AI 辅助 (Codeium)
-- 📂 **导航**：neo-tree 文件树，Telescope 模糊搜索，Flash 快速跳转
+- 📂 **导航**：neo-tree 文件树，Telescope 模糊搜索，Flash 快速跳转，项目管理
 - 🐍 **Python 支持**：虚拟环境自动检测与激活，与 Pyright LSP 深度集成
 - 🌿 **Git 集成**：gitsigns 状态显示，diffview 可视化 diff 工具
 - 🖥️ **终端管理**：toggleterm 多终端支持，自动激活 Python venv
@@ -80,6 +80,7 @@ sudo apt install clangd
 
 | 快捷键 | 功能 |
 |--------|------|
+| `<leader>h` | 打开启动面板 |
 | `<leader>e` | 打开/聚焦文件树 |
 | `<leader>ff` | 查找文件 |
 | `<leader>fg` | 全局搜索 |
