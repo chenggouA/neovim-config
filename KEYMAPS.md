@@ -321,22 +321,25 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 
 ---
 
-## Git (Diffview)
+## Git 操作
 
-### Diff 视图操作
+### 核心操作
 
-| 快捷键       | 功能                               |
-| ------------ | ---------------------------------- |
-| `<leader>dv` | 打开 Diffview（对比工作区与 HEAD） |
-| `<leader>dh` | 查看当前文件的 Git 历史            |
-| `<leader>dH` | 查看整个项目的 Git 历史            |
+| 快捷键       | 功能                                      |
+| ------------ | ----------------------------------------- |
+| `<leader>gg` | 打开 Git Graph（可视化提交图）            |
+| `<leader>gd` | 打开 Git Diff（对比工作区与 HEAD）        |
+| `<leader>gf` | 查看当前文件的 Git 历史                   |
+| `<leader>gF` | 查看整个项目的 Git 历史                   |
 
-💡 **提示**：使用 `<Alt-w>` 关闭 Diffview 标签页（见"标签页管理"章节）
+💡 **提示**：
+- 使用 `<Alt-w>` 关闭 Git Graph/Diffview 标签页（见"标签页管理"章节）
+- 在 Git Graph 中按 `<Enter>` 选择提交会自动打开 diffview 查看详情
 
 **Visual 模式**：
 | 快捷键 | 功能 |
 |--------|------|
-| `<leader>dh` | 查看选中行的 Git 演进历史（行级跟踪） |
+| `<leader>gf` | 查看选中行的 Git 演进历史（行级跟踪） |
 
 ### 在 Diffview 中（Diff 视图）
 
@@ -455,9 +458,9 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 | ----------- | ----------------------------------- |
 | `<leader>b` | Buffer 管理                         |
 | `<leader>c` | 代码操作（Code/Conflict）           |
-| `<leader>d` | Diffview（Git diff 和历史）         |
 | `<leader>e` | 文件树（Explorer）                  |
 | `<leader>f` | 查找（Find/Search）                 |
+| `<leader>g` | Git 操作（Graph/Diff/History）      |
 | `<leader>h` | Hunk 操作（Stage/Unstage Git 改动） |
 | `<leader>m` | CMake 构建                          |
 | `<leader>r` | 重命名/窗口调整（Rename/Resize）    |

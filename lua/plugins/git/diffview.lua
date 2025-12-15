@@ -19,14 +19,14 @@ return {
 		},
 	},
 	keys = {
-		-- 基础 diff 操作
-		{ "<leader>dv", "<cmd>DiffviewOpen<cr>", desc = "打开 Diffview" },
+		-- Git diff 操作
+		{ "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Git Diff (当前改动)" },
 
-		-- 文件历史
-		{ "<leader>dh", "<cmd>DiffviewFileHistory %<cr>", desc = "当前文件历史" },
-		{ "<leader>dH", "<cmd>DiffviewFileHistory<cr>", desc = "整个项目历史" },
+		-- Git 文件历史
+		{ "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", desc = "Git 文件历史" },
+		{ "<leader>gF", "<cmd>DiffviewFileHistory<cr>", desc = "Git 完整历史" },
 
 		-- 可视模式下查看选中行的演进历史
-		{ "<leader>dh", ":'<,'>DiffviewFileHistory<cr>", mode = "v", desc = "选中行的 Git 历史" },
+		{ "<leader>gf", ":'<,'>DiffviewFileHistory<cr>", mode = "v", desc = "Git 选中行历史" },
 	},
 }
