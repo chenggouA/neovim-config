@@ -198,27 +198,30 @@
 
 Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏幕上的任何位置。
 
-| 快捷键   | 模式          | 功能                                     |
-| -------- | ------------- | ---------------------------------------- |
-| `s`      | Normal/Visual | Flash 跳转（输入搜索内容后显示跳转标签） |
-| `S`      | Normal/Visual | Flash Treesitter（智能选择代码块/函数等）|
-| `R`      | Visual        | Treesitter 搜索                          |
-| `<C-s>` | Command-line  | 在 `/` 或 `?` 搜索时切换 Flash 标签显示  |
+| 快捷键  | 模式          | 功能                                      |
+| ------- | ------------- | ----------------------------------------- |
+| `s`     | Normal/Visual | Flash 跳转（输入搜索内容后显示跳转标签）  |
+| `S`     | Normal/Visual | Flash Treesitter（智能选择代码块/函数等） |
+| `R`     | Visual        | Treesitter 搜索                           |
+| `<C-s>` | Command-line  | 在 `/` 或 `?` 搜索时切换 Flash 标签显示   |
 
 ### 使用示例
 
 **基础跳转**：
+
 1. 按 `s`
 2. 输入要搜索的字符（如 `func`）
 3. 所有匹配位置显示标签字符（a, b, c...）
 4. 按标签字符立即跳转
 
 **选择代码块**：
+
 1. 按 `S`
 2. 光标所在的函数、if 块等显示标签
 3. 按标签选择对应代码块
 
 **在搜索中使用**：
+
 1. 按 `/` 开始搜索
 2. 输入搜索内容
 3. 按 `<C-s>` 显示所有匹配的跳转标签
@@ -242,6 +245,7 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 | `<leader>ca` | 代码操作（Code Action） |
 
 💡 **Inlay Hints（类型提示）**：
+
 - **默认启用**：在 C/C++ 文件中会自动显示类型推导（如 `auto` 变量的实际类型）、函数参数名等内联提示
 - **手动关闭**：如需关闭，在命令模式输入：`:lua vim.lsp.inlay_hint.enable(false)`
 - **重新开启**：`:lua vim.lsp.inlay_hint.enable(true)`
@@ -325,14 +329,15 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 
 ### 核心操作
 
-| 快捷键       | 功能                                      |
-| ------------ | ----------------------------------------- |
-| `<leader>gg` | 打开 Git Graph（可视化提交图）            |
-| `<leader>gd` | 打开 Git Diff（对比工作区与 HEAD）        |
-| `<leader>gf` | 查看当前文件的 Git 历史                   |
-| `<leader>gF` | 查看整个项目的 Git 历史                   |
+| 快捷键       | 功能                               |
+| ------------ | ---------------------------------- |
+| `<leader>gg` | 打开 Git Graph（可视化提交图）     |
+| `<leader>gd` | 打开 Git Diff（对比工作区与 HEAD） |
+| `<leader>gf` | 查看当前文件的 Git 历史            |
+| `<leader>gF` | 查看整个项目的 Git 历史            |
 
 💡 **提示**：
+
 - 使用 `<Alt-w>` 关闭 Git Graph/Diffview 标签页（见"标签页管理"章节）
 - 在 Git Graph 中按 `<Enter>` 选择提交会自动打开 diffview 查看详情
 
@@ -461,7 +466,7 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 | `<leader>e` | 文件树（Explorer）                  |
 | `<leader>f` | 查找（Find/Search）                 |
 | `<leader>g` | Git 操作（Graph/Diff/History）      |
-| `<leader>h` | Hunk 操作（Stage/Unstage Git 改动） |
+| `<leader>h` | 帮助（Help）                        |
 | `<leader>m` | CMake 构建                          |
 | `<leader>r` | 重命名/窗口调整（Rename/Resize）    |
 | `<leader>t` | 终端（Terminal）                    |
