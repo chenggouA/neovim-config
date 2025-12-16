@@ -51,11 +51,11 @@
 1. **克隆仓库**
    - **Linux/macOS**
      ```bash
-     git clone <repo> ~/.config/nvim
+     git clone https://github.com/chenggouA/neovim-config.git ~/.config/nvim
      ```
    - **Windows**
      ```powershell
-     git clone <repo> $Env:LOCALAPPDATA\nvim
+     git clone https://github.com/chenggouA/neovim-config.git $Env:LOCALAPPDATA\nvim
      ```
 2. **首次启动**
    打开 Neovim，`lazy.nvim` 与所有插件会自动安装。安装完成后即可使用。
