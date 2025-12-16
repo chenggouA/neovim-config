@@ -18,33 +18,43 @@
 
 详细插件列表请查看：**[PLUGINS.md](PLUGINS.md)**
 
-## 先决条件
+## 环境要求
 
-- **Neovim** ≥ 0.9
-- 推荐安装 [Nerd Fonts](https://www.nerdfonts.com/) 中的 **JetBrainsMono** 字体
-- 系统需提供 **C 编译器**（tree-sitter 构建使用）
-- **ripgrep** (可选，用于 Telescope 全局搜索)
+### 基础环境
 
-## 外部依赖
+- **Neovim** ≥ 0.9（必须）
 
-### LSP 服务器与工具（自动安装）
+### 需要手动安装的工具
 
-以下 LSP 服务器和格式化工具会通过 **mason-lspconfig** 和 **mason-tool-installer** 在 Neovim 启动时自动安装：
+以下工具无法通过 Mason 自动安装，需要通过系统包管理器手动安装：
 
-**LSP 服务器**：
-- **pyright** (Python)
-- **jsonls** (JSON)
-- **marksman** (Markdown)
-- **bufls** (Protocol Buffers)
-- **clangd** (C/C++)
+| 工具 | 用途 | 是否必须 | 安装方式 |
+|------|------|---------|---------|
+| **Node.js** | Mason 安装部分工具的依赖 | 必须 | `brew install node` / [官网下载](https://nodejs.org/) |
+| **Python 3** | Python 开发环境 | 开发 Python 时必须 | `brew install python3` / `apt install python3` |
+| **C 编译器** | tree-sitter 编译语法解析器 | 必须 | `xcode-select --install` (macOS) / `apt install build-essential` (Linux) |
+| **ripgrep** | Telescope 全局搜索 | 强烈推荐 | `brew install ripgrep` / `apt install ripgrep` |
+| **Nerd Font** | 图标显示 | 推荐 | 下载 [JetBrainsMono Nerd Font](https://www.nerdfonts.com/) |
 
-**格式化工具**：
-- **stylua** (Lua 格式化)
-- **prettier** (Markdown/JSON 格式化)
-- **ruff** (Python 格式化与 linter)
-- **buf** (Protocol Buffers 格式化)
+**快速安装**：
+```bash
+# macOS
+brew install node python3 ripgrep
+xcode-select --install  # 安装 C 编译器
+brew install --cask font-jetbrains-mono-nerd-font
 
-**注意**：工具会在启动后 3 秒自动检查并安装，也可以通过 `:Mason` 手动管理。
+# Ubuntu/Debian
+sudo apt install nodejs python3 python3-pip build-essential ripgrep
+```
+
+### Mason 自动安装的工具 ✅
+
+以下工具会在 Neovim 启动后 3 秒自动安装，**无需手动操作**：
+
+**LSP 服务器**：pyright, jsonls, marksman, bufls, clangd
+**格式化工具**：stylua, prettier, jq, ruff, buf
+
+💡 **提示**：首次启动后可通过 `:Mason` 查看所有工具的安装状态。
 
 ## 快速上手
 

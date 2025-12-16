@@ -14,7 +14,6 @@ NC='\033[0m' # No Color
 
 # 配置参数
 NVIM_VERSION="v0.11.5"
-STYLUA_VERSION="v2.3.1"
 NVIM_LISTEN_PORT="${NVIM_LISTEN_PORT:-6666}"
 START_SERVER="${1:-no}"  # 是否启动服务器：yes/no
 
@@ -38,18 +37,16 @@ ARCH=$(uname -m)
 case "$ARCH" in
     x86_64|amd64)
         NVIM_ARCH="x86_64"
-        STYLUA_ARCH="x86_64"
         ;;
     aarch64|arm64)
         NVIM_ARCH="arm64"
-        STYLUA_ARCH="aarch64"
         ;;
     *)
         echo_error "不支持的架构: $ARCH"
         exit 1
         ;;
 esac
-echo_info "架构: $ARCH (Neovim: $NVIM_ARCH, Stylua: $STYLUA_ARCH)"
+echo_info "架构: $ARCH (Neovim: $NVIM_ARCH)"
 
 # ============================================================================
 # 2. 更新包列表并安装基础依赖
@@ -76,7 +73,7 @@ sudo apt-get install -y \
     sudo
 
 # ============================================================================
-# 3. 安装 Python 环境和格式化工具
+# 3. 安装 Python 环境
 # ============================================================================
 echo_info "安装 Python 环境..."
 sudo apt-get install -y \
@@ -84,12 +81,8 @@ sudo apt-get install -y \
     python3-pip \
     python3-venv
 
-echo_info "安装 Python 格式化工具 (ruff)..."
-pip3 install --user --break-system-packages ruff || \
-    pip3 install --user ruff
-
 # ============================================================================
-# 4. 安装 Node.js 和格式化工具
+# 4. 安装 Node.js (Mason 需要)
 # ============================================================================
 echo_info "检查 Node.js..."
 if ! command -v node &> /dev/null; then
@@ -100,8 +93,8 @@ else
     echo_info "Node.js 已安装: $(node --version)"
 fi
 
-echo_info "安装 Node.js 格式化工具..."
-sudo npm install -g prettier neovim
+echo_info "安装 neovim npm 包 (Mason 依赖)..."
+sudo npm install -g neovim
 
 # ============================================================================
 # 5. 安装 Neovim (最新版本)
@@ -123,28 +116,7 @@ rm /tmp/nvim.tar.gz
 echo_info "Neovim 安装完成: $(nvim --version | head -n1)"
 
 # ============================================================================
-# 6. 安装 Stylua (Lua 格式化工具)
-# ============================================================================
-echo_info "安装 Stylua ${STYLUA_VERSION}..."
-
-STYLUA_URL="https://github.com/JohnnyMorganz/StyLua/releases/download/${STYLUA_VERSION}/stylua-linux-${STYLUA_ARCH}.zip"
-echo_info "下载: $STYLUA_URL"
-wget -qO /tmp/stylua.zip "$STYLUA_URL"
-unzip -o /tmp/stylua.zip -d /tmp
-sudo mv /tmp/stylua /usr/local/bin/stylua
-sudo chmod +x /usr/local/bin/stylua
-rm /tmp/stylua.zip
-
-echo_info "Stylua 安装完成: $(stylua --version)"
-
-# ============================================================================
-# 7. 安装 jq (JSON 格式化工具)
-# ============================================================================
-echo_info "安装 jq..."
-sudo apt-get install -y jq
-
-# ============================================================================
-# 8. 检查 Neovim 配置目录
+# 6. 检查 Neovim 配置目录
 # ============================================================================
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 
@@ -159,7 +131,7 @@ else
 fi
 
 # ============================================================================
-# 9. 安装/同步 Neovim 插件
+# 7. 安装/同步 Neovim 插件
 # ============================================================================
 if [ "$SKIP_PLUGINS" = "false" ]; then
     echo_info "同步 Neovim 插件 (Lazy.nvim)..."
@@ -169,17 +141,13 @@ if [ "$SKIP_PLUGINS" = "false" ]; then
     echo_info "第二次同步 (确保所有插件加载)..."
     nvim --headless "+Lazy! sync" +qa || true
 
-    # ============================================================================
-    # 10. 安装 LSP 服务器 (Mason)
-    # ============================================================================
-    echo_info "安装 LSP 服务器 (pyright, clangd)..."
-    nvim --headless "+MasonInstall pyright clangd" +qa || true
+    echo_info "LSP 服务器和格式化工具将在首次启动时自动安装 (mason-tool-installer)"
 else
     echo_warn "跳过插件安装（配置目录未找到）"
 fi
 
 # ============================================================================
-# 12. 启动 Neovim Server (可选)
+# 8. 启动 Neovim Server (可选)
 # ============================================================================
 if [ "$START_SERVER" = "yes" ] || [ "$START_SERVER" = "server" ]; then
     echo_info "启动 Neovim Server (监听 0.0.0.0:${NVIM_LISTEN_PORT})..."
@@ -208,10 +176,10 @@ echo_info "已安装的工具:"
 echo "  - Neovim: $(nvim --version | head -n1)"
 echo "  - Node.js: $(node --version)"
 echo "  - Python: $(python3 --version)"
-echo "  - Ruff: $(ruff --version 2>/dev/null || echo 'installed')"
-echo "  - Stylua: $(stylua --version)"
-echo "  - Prettier: $(prettier --version)"
-echo "  - jq: $(jq --version)"
+echo ""
+echo_info "通过 Mason 自动安装的工具 (首次启动后):"
+echo "  - LSP: pyright, jsonls, marksman, bufls, clangd"
+echo "  - Formatters: stylua, prettier, ruff, buf, jq"
 echo ""
 echo_info "使用方法:"
 echo "  直接运行: nvim"

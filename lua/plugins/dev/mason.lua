@@ -26,6 +26,7 @@ return {
 				"prettier", -- Markdown/JSON formatter
 				"ruff",     -- Python formatter/linter
 				"buf",      -- Protocol Buffers formatter
+                "jq",       -- JSON formatter
 			},
 			auto_update = true,       -- 自动更新工具
 			run_on_start = true,      -- 启动时检查并安装

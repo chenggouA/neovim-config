@@ -48,7 +48,7 @@
 
 ### mason-tool-installer.nvim
 **仓库**: `WhoIsSethDaniel/mason-tool-installer.nvim`
-**作用**: 自动安装和管理 formatters、linters 等开发工具（stylua、prettier、ruff、buf）
+**作用**: 自动安装和管理 formatters、linters 等开发工具（stylua、prettier、jq、ruff、buf）
 
 ### schemastore.nvim
 **仓库**: `b0o/schemastore.nvim`
