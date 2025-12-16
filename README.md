@@ -8,7 +8,7 @@
 
 - 🐬 **启动面板**：alpha-nvim 启动界面，海豚 ASCII 艺术，最近项目快速访问
 - 🎨 **外观**：One Dark Pro 主题，透明背景支持，which-key 快捷键提示
-- 🔧 **开发工具**：LSP (Pyright/clangd/jsonls/marksman)，智能补全，AI 辅助 (Codeium)
+- 🔧 **开发工具**：LSP (Pyright/clangd/jsonls/marksman/bufls)，智能补全，AI 辅助 (Codeium)
 - 📂 **导航**：neo-tree 文件树，Telescope 模糊搜索，Flash 快速跳转，项目管理
 - 🐍 **Python 支持**：虚拟环境自动检测与激活，与 Pyright LSP 深度集成
 - 🌿 **Git 集成**：gitsigns 状态显示，diffview 可视化 diff 工具
@@ -27,30 +27,24 @@
 
 ## 外部依赖
 
-### LSP 服务器（自动安装）
+### LSP 服务器与工具（自动安装）
 
-以下 LSP 服务器会通过 Mason 自动安装：
+以下 LSP 服务器和格式化工具会通过 **mason-lspconfig** 和 **mason-tool-installer** 在 Neovim 启动时自动安装：
+
+**LSP 服务器**：
 - **pyright** (Python)
 - **jsonls** (JSON)
 - **marksman** (Markdown)
+- **bufls** (Protocol Buffers)
+- **clangd** (C/C++)
 
-**注意**：`clangd` (C/C++) 在 ARM Mac 上需要手动安装：
-```bash
-brew install llvm
-# 或
-sudo apt install clangd
-```
+**格式化工具**：
+- **stylua** (Lua 格式化)
+- **prettier** (Markdown/JSON 格式化)
+- **ruff** (Python 格式化与 linter)
+- **buf** (Protocol Buffers 格式化)
 
-### 格式化工具（按需安装）
-
-代码格式化工具需通过 `:Mason` 手动安装，或使用系统包管理器：
-
-| 工具 | 用途 | 安装方式 |
-|------|------|---------|
-| **stylua** | Lua 格式化 | `:Mason` 搜索安装，或 `brew install stylua` |
-| **prettier** | Markdown/JSON/YAML | `:Mason` 搜索安装，或 `npm install -g prettier` |
-| **jq** | JSON 格式化 | `:Mason` 搜索安装，或 `brew install jq` |
-| **ruff** | Python 格式化 | `:Mason` 搜索安装，或 `pip install ruff` |
+**注意**：工具会在启动后 3 秒自动检查并安装，也可以通过 `:Mason` 手动管理。
 
 ## 快速上手
 

@@ -5,18 +5,35 @@ return {
 		-- 先初始化 mason
 		require("mason").setup()
 
-		-- 在 mason 初始化完成后，立即设置 mason-lspconfig
+		-- LSP 服务器管理
 		require("mason-lspconfig").setup({
-			-- 自动安装的 LSP 服务器
-			-- 注意:
-			--   - clangd 在 ARM Mac 上需要手动安装（不在此列表）
-			--   - 格式化工具（prettier, stylua, jq）需通过 :Mason 手动安装
-			ensure_installed = { "pyright", "jsonls", "marksman" },
-			automatic_enable = false, -- 不自动启动（由 lspconfig 手动控制）
+			ensure_installed = {
+				"pyright",   -- Python LSP
+				"jsonls",    -- JSON LSP
+				"marksman",  -- Markdown LSP
+				"bufls",     -- Protocol Buffers LSP
+				"clangd",    -- C/C++ LSP
+			},
+			automatic_enable = false,     -- 不自动启动（由 lspconfig 手动控制）
 			automatic_installation = true, -- 自动安装缺失的 LSP
+		})
+
+		-- Formatters & Linters 管理
+		require("mason-tool-installer").setup({
+			ensure_installed = {
+				-- Formatters
+				"stylua",   -- Lua formatter
+				"prettier", -- Markdown/JSON formatter
+				"ruff",     -- Python formatter/linter
+				"buf",      -- Protocol Buffers formatter
+			},
+			auto_update = true,       -- 自动更新工具
+			run_on_start = true,      -- 启动时检查并安装
+			start_delay = 3000,       -- 延迟 3 秒启动（避免干扰启动速度）
 		})
 	end,
 	dependencies = {
 		"mason-org/mason-lspconfig.nvim",
+		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 }

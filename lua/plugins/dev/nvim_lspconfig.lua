@@ -196,7 +196,26 @@ return {
         vim.lsp.enable("marksman")
 
         --------------------------------------------------------------------------
-        -- ⑤ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
+        -- ⑤ bufls ─ Protocol Buffers LSP
+        --------------------------------------------------------------------------
+        vim.lsp.config.bufls = {
+            cmd = { "buf", "lsp", "serve" },
+            capabilities = capabilities,
+            on_attach = on_attach,
+            filetypes = { "proto" },
+
+            root_dir = vim.fs.root(0, {
+                "buf.yaml",
+                "buf.work.yaml",
+                ".git",
+            }),
+        }
+
+        -- 启用 bufls
+        vim.lsp.enable("bufls")
+
+        --------------------------------------------------------------------------
+        -- ⑥ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim
         --    如需 Ruff 诊断/Code Action，可在此重新启用
         --------------------------------------------------------------------------
     end,

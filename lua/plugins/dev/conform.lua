@@ -20,6 +20,8 @@ return {
                 -- Python：优先使用 uvx 的全局 ruff；若无则退回系统 ruff
                 -- 顺序：fix -> format
                 python = {"ruff_fix", "ruff_format" },
+                -- Protocol Buffers: buf format
+                proto = { "buf" },
             },
 
 			-- 2. 每个 formatter 的调用参数
@@ -63,6 +65,17 @@ return {
                     stdin = true,
                     condition = function()
                         return vim.fn.executable("ruff") == 1
+                    end,
+                },
+                ------------------------------------------------------------------
+                -- Protocol Buffers: buf format
+                ------------------------------------------------------------------
+                buf = {
+                    command = "buf",
+                    args = { "format", "--path", "$FILENAME" },
+                    stdin = true,
+                    condition = function()
+                        return vim.fn.executable("buf") == 1
                     end,
                 },
 			},

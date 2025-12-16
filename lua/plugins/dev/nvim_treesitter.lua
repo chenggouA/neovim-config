@@ -42,6 +42,7 @@ return {
 				"cpp",
 				"toml",
 				"yaml",
+
 			},
 			highlight = {
 				enable = true,

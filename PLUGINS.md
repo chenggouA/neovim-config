@@ -46,6 +46,10 @@
 **仓库**: `williamboman/mason-lspconfig.nvim`
 **作用**: mason.nvim 和 nvim-lspconfig 的桥接器，自动安装 LSP 服务器
 
+### mason-tool-installer.nvim
+**仓库**: `WhoIsSethDaniel/mason-tool-installer.nvim`
+**作用**: 自动安装和管理 formatters、linters 等开发工具（stylua、prettier、ruff、buf）
+
 ### schemastore.nvim
 **仓库**: `b0o/schemastore.nvim`
 **作用**: 提供 JSON schema 支持，为 package.json、tsconfig.json 等文件提供智能补全和验证
@@ -80,7 +84,7 @@
 
 ### conform.nvim
 **仓库**: `stevearc/conform.nvim`
-**作用**: 统一代码格式化工具，支持 Lua (stylua)、JSON (jq)、Markdown (prettier)、Python (ruff)
+**作用**: 统一代码格式化工具，支持 Lua (stylua)、JSON (jq)、Markdown (prettier)、Python (ruff)、Protocol Buffers (buf)
 
 ### nvim-treesitter
 **仓库**: `nvim-treesitter/nvim-treesitter`
@@ -186,9 +190,9 @@
 
 ## 统计
 
-**总计**: 35 个插件
+**总计**: 36 个插件
 - 外观: 6 个
-- 开发工具: 18 个
+- 开发工具: 19 个
 - 导航: 6 个
 - 实用工具: 3 个
 - Git 集成: 3 个
