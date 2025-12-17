@@ -21,7 +21,9 @@ return {
 			window = {
 				position = "left",
 				width = 30,
-				-- 使用 Neo-tree 默认映射（无自定义）
+				mappings = {
+					["t"] = "noop", -- 禁用在新标签页打开文件
+				},
 			},
 
 			-- ✨ 文件系统设置

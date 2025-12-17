@@ -12,6 +12,13 @@ return {
 			enable_cmp_source = true, -- 启用 cmp 补全源（在补全菜单中显示）
 			virtual_text = {
 				enabled = true, -- 启用虚拟文本补全（灰色内联建议）
+				filetypes = {
+					-- 禁用 Codeium 在特殊缓冲区中工作（防止非 UTF-8 字符导致崩溃）
+					TelescopePrompt = false,
+					["neo-tree"] = false,
+					help = false,
+				},
+				default_filetype_enabled = true, -- 其他文件类型默认启用
 				key_bindings = {
 					accept = "<Tab>", -- Tab 接受虚拟文本（无虚拟文本时插入 Tab）
 					next = "<M-j>", -- Alt+j 切换到下一个 AI 建议
