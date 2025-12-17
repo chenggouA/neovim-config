@@ -196,10 +196,10 @@ return {
         vim.lsp.enable("marksman")
 
         --------------------------------------------------------------------------
-        -- ⑤ bufls ─ Protocol Buffers LSP
+        -- ⑤ buf_ls ─ Protocol Buffers LSP (使用 buf 工具)
         --------------------------------------------------------------------------
-        vim.lsp.config.bufls = {
-            cmd = { "buf", "lsp", "serve" },
+        vim.lsp.config.buf_ls = {
+            cmd = { "buf", "beta", "lsp" }, -- buf 工具的 LSP 模式
             capabilities = capabilities,
             on_attach = on_attach,
             filetypes = { "proto" },
@@ -211,8 +211,8 @@ return {
             }),
         }
 
-        -- 启用 bufls
-        vim.lsp.enable("bufls")
+        -- 启用 buf_ls
+        vim.lsp.enable("buf_ls")
 
         --------------------------------------------------------------------------
         -- ⑥ 取消 Ruff-LSP：若仅需格式化，请使用 conform.nvim

@@ -8,11 +8,11 @@ return {
 		-- LSP 服务器管理
 		require("mason-lspconfig").setup({
 			ensure_installed = {
-				"pyright",   -- Python LSP
-				"jsonls",    -- JSON LSP
-				"marksman",  -- Markdown LSP
-				"bufls",     -- Protocol Buffers LSP
-				"clangd",    -- C/C++ LSP
+				"pyright",  -- Python LSP
+				"jsonls",   -- JSON LSP
+				"marksman", -- Markdown LSP
+				"clangd",   -- C/C++ LSP
+				-- buf 通过 mason-tool-installer 安装（它同时提供 LSP + formatter）
 			},
 			automatic_enable = false,     -- 不自动启动（由 lspconfig 手动控制）
 			automatic_installation = true, -- 自动安装缺失的 LSP
@@ -25,12 +25,12 @@ return {
 				"stylua",   -- Lua formatter
 				"prettier", -- Markdown/JSON formatter
 				"ruff",     -- Python formatter/linter
-				"buf",      -- Protocol Buffers formatter
-                "jq",       -- JSON formatter
+				"buf",      -- Protocol Buffers (LSP + formatter + linter 多合一)
+				"jq",       -- JSON formatter
 			},
-			auto_update = true,       -- 自动更新工具
-			run_on_start = true,      -- 启动时检查并安装
-			start_delay = 3000,       -- 延迟 3 秒启动（避免干扰启动速度）
+			auto_update = true,  -- 自动更新工具
+			run_on_start = true, -- 启动时检查并安装
+			start_delay = 3000,  -- 延迟 3 秒启动（避免干扰启动速度）
 		})
 	end,
 	dependencies = {
