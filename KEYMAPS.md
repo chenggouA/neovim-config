@@ -77,14 +77,6 @@
 
 💡 **提示**：也可以用鼠标拖动窗口分隔线调整大小
 
-### 窗口管理
-
-| 快捷键       | 功能             |
-| ------------ | ---------------- |
-| `<leader>wd` | 关闭当前窗口     |
-| `<leader>wD` | 强制关闭当前窗口 |
-| `<leader>wo` | 关闭其他所有窗口 |
-
 ---
 
 ## Buffer 管理
@@ -491,8 +483,7 @@ Flash.nvim 提供基于标签的快速跳转功能，让你能快速定位到屏
 | `<leader>g` | Git 操作（Graph/Diff/History）      |
 | `<leader>h` | 帮助（Help）                        |
 | `<leader>m` | CMake 构建                          |
-| `<leader>r` | 重命名/窗口调整（Rename/Resize）    |
+| `<leader>r` | 窗口调整（Resize）                  |
 | `<leader>t` | 终端（Terminal）                    |
 | `<leader>v` | Python 虚拟环境（Venv）             |
-| `<leader>w` | 窗口管理（Window）                  |
 | `<leader>z` | 折叠（Fold）                        |

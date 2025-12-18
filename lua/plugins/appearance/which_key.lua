@@ -21,7 +21,6 @@ return {
 			{ "<leader>r", group = "调整" },
 			{ "<leader>t", group = "终端" },
 			{ "<leader>v", group = "Venv" },
-			{ "<leader>w", group = "窗口" },
 			{ "<leader>z", group = "折叠" },
 		})
 	end,

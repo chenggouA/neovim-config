@@ -17,13 +17,6 @@ function M.setup()
 	map({ "n", "v" }, "H", "^", "Jump to line start (non-blank)")
 	map({ "n", "v" }, "L", "$", "Jump to line end")
 
-	-- 关闭当前窗口 / 强制关闭
-	map("n", "<leader>wd", "<cmd>close<CR>", "关闭当前窗口")
-	map("n", "<leader>wD", "<cmd>close!<CR>", "强制关闭窗口")
-
-	-- 只保留当前窗口
-	map("n", "<leader>wo", "<cmd>only<CR>", "关闭其他窗口")
-
 	-- 折叠相关快捷键（leader z）
 	map("n", "<leader>zo", "zR", "展开所有折叠")
 	map("n", "<leader>zc", "zM", "折叠所有代码块")
