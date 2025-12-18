@@ -1,14 +1,14 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
-	event = { "BufReadPost", "BufNewFile" },
+	lazy = false, -- nvim-treesitter does not support lazy-loading
 	dependencies = {
 		"HiPhish/rainbow-delimiters.nvim",
 	},
 	config = function()
 		-- 应用编译器配置到nvim-treesitter
 		local function detect_available_compilers()
-			local candidates = { "clang", "gcc", "cl" } -- clang优先，最后是 MSVC 的 cl.exe
+			local candidates = { "clang", "gcc", "cl" } -- clang优先,最后是 MSVC 的 cl.exe
 			local found = {}
 
 			for _, compiler in ipairs(candidates) do
@@ -26,10 +26,11 @@ return {
 
 		require("nvim-treesitter.install").prefer_git = true
 
+		-- 使用新版本的配置方式
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"lua",
-				"vim",
+				"query",
 				"bash",
 				"python",
 				"javascript",
@@ -38,12 +39,14 @@ return {
 				"css",
 				"json",
 				"markdown",
+				"markdown_inline",
 				"c",
 				"cpp",
 				"toml",
 				"yaml",
-
 			},
+			sync_install = false,
+			auto_install = true,
 			highlight = {
 				enable = true,
 				additional_vim_regex_highlighting = false,
