@@ -30,6 +30,10 @@
 **仓库**: `folke/which-key.nvim`
 **作用**: 快捷键提示面板，显示可用的键位组合和功能说明
 
+### indent-blankline.nvim
+**仓库**: `lukas-reineke/indent-blankline.nvim`
+**作用**: 缩进参考线，显示代码缩进层级，当前作用域使用绿色粗线高亮
+
 ---
 
 ## 开发工具（Dev）
@@ -105,6 +109,14 @@
 ### nvim-gomove
 **仓库**: `booperlv/nvim-gomove`
 **作用**: 代码块和行的快速移动（支持 Alt+hjkl 移动）
+
+### Comment.nvim
+**仓库**: `numToStr/Comment.nvim`
+**作用**: 智能代码注释插件，支持行注释（gcc）、块注释（gbc）、选中注释（gc），集成 Treesitter 支持复杂语法
+
+### nvim-ts-context-commentstring
+**仓库**: `JoosepAlviste/nvim-ts-context-commentstring`
+**作用**: Treesitter 注释字符串上下文支持，为 Comment.nvim 提供 JSX/TSX 等复杂语法的注释支持
 
 ### codeium.nvim (windsurf.nvim)
 **仓库**: `Exafunction/codeium.nvim`
@@ -190,9 +202,9 @@
 
 ## 统计
 
-**总计**: 36 个插件
-- 外观: 6 个
-- 开发工具: 19 个
+**总计**: 39 个插件
+- 外观: 7 个
+- 开发工具: 21 个
 - 导航: 6 个
 - 实用工具: 3 个
 - Git 集成: 3 个
