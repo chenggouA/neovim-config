@@ -10,8 +10,16 @@ return {
 		vim.o.foldlevelstart = 99
 		vim.o.foldenable = true
 
-		-- 使用默认配置
-		require("ufo").setup()
+		-- 配置 nvim-ufo，排除 neo-tree 等特殊 buffer
+		require("ufo").setup({
+			provider_selector = function(bufnr, filetype, buftype)
+				-- 在 neo-tree 等特殊 buffer 中禁用折叠
+				if filetype == "neo-tree" or filetype == "" or buftype ~= "" then
+					return ""
+				end
+				return { "treesitter", "indent" }
+			end,
+		})
 	end,
 
 	keys = {
