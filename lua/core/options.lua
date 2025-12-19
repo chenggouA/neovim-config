@@ -97,9 +97,6 @@ end
 -- 默认不与系统剪贴板同步，避免 yy、dd 等操作污染剪贴板
 -- 如需从系统剪贴板复制，可使用 <leader>y 等自定义按键
 vim.o.clipboard = ""
--- 设置代码折叠
+-- 代码折叠由 nvim-ufo 插件管理，这里只保留基础的 treesitter 折叠表达式
 opt.foldmethod = "expr"
--- 使用 Neovim 内置的 Tree-sitter 折叠表达式，避免旧函数在部分语言下无折叠的问题
 opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-opt.foldenable = false -- 默认不折叠，打开文件时是展开的
-opt.foldlevel = 99 -- 打开所有层级

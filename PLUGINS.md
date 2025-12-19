@@ -166,6 +166,11 @@
 **仓库**: `OXY2DEV/markview.nvim`
 **作用**: Markdown 实时预览和渲染，支持混合模式编辑
 
+### nvim-ufo
+**仓库**: `kevinhwang91/nvim-ufo`
+**作用**: 现代化代码折叠插件，使用 Treesitter 提供智能折叠，折叠时完整显示第一行内容（类似 VSCode），支持折叠预览和导航
+**依赖**: `kevinhwang91/promise-async`
+
 ---
 
 ## Git 集成（Git）
@@ -198,14 +203,18 @@
 **仓库**: `nvim-tree/nvim-web-devicons`
 **作用**: 文件类型图标支持
 
+### promise-async
+**仓库**: `kevinhwang91/promise-async`
+**作用**: 异步 Promise 库，被 nvim-ufo 依赖
+
 ---
 
 ## 统计
 
-**总计**: 39 个插件
+**总计**: 41 个插件
 - 外观: 7 个
 - 开发工具: 21 个
 - 导航: 6 个
-- 实用工具: 3 个
+- 实用工具: 4 个
 - Git 集成: 3 个
-- 依赖库: 3 个
+- 依赖库: 4 个

@@ -3,7 +3,13 @@
 return {
 	"folke/flash.nvim",
 	event = "VeryLazy",
-	opts = {},
+	opts = {
+		modes = {
+			treesitter = {
+				jump = { autojump = false }, -- 禁用自动跳转,需要手动选择节点
+			},
+		},
+	},
 	keys = {
 		{
 			"s",
@@ -15,19 +21,11 @@ return {
 		},
 		{
 			"S",
-			mode = { "n", "x", "o" },
+			mode = "n",
 			function()
 				require("flash").treesitter()
 			end,
 			desc = "Flash Treesitter",
-		},
-		{
-			"R",
-			mode = { "o", "x" },
-			function()
-				require("flash").treesitter_search()
-			end,
-			desc = "Treesitter 搜索",
 		},
 		{
 			"<c-s>",

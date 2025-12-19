@@ -17,12 +17,7 @@ function M.setup()
 	map({ "n", "v" }, "H", "^", "Jump to line start (non-blank)")
 	map({ "n", "v" }, "L", "$", "Jump to line end")
 
-	-- 折叠相关快捷键（leader z）
-	map("n", "<leader>zo", "zR", "展开所有折叠")
-	map("n", "<leader>zc", "zM", "折叠所有代码块")
-	map("n", "<leader>zt", "za", "切换当前折叠状态")
-	map("n", "<leader>zu", "zo", "展开当前折叠")
-	map("n", "<leader>zz", "zc", "折叠当前代码块")
+	-- 折叠快捷键由 nvim-ufo 插件统一管理
 
 	-- Python：一键激活项目 .venv 并重启 Pyright
 	map("n", "<leader>va", function()
