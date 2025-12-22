@@ -131,11 +131,32 @@ return {
 
             filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
 
-            root_dir = vim.fs.root(0, {
-                "compile_commands.json",
-                "compile_flags.txt",
-                ".git",
-            }),
+            -- 只在正常文件中启动,避免在 diffview 等虚拟 buffer 中启动
+            root_dir = function(bufnr, on_dir)
+                -- 获取 buffer 的文件名
+                local fname = vim.api.nvim_buf_get_name(bufnr)
+
+                -- 检查 1: 跳过使用特殊 URI scheme 的 buffer (diffview://, fugitive:// 等)
+                if fname:match("^%w+://") then
+                    return -- 不调用 on_dir，跳过 LSP 启动
+                end
+
+                -- 检查 2: 跳过特殊 buffer (terminal, help, quickfix 等)
+                local ok, buftype = pcall(vim.api.nvim_buf_get_option, bufnr, "buftype")
+                if ok and buftype ~= "" then
+                    return -- 不调用 on_dir，跳过 LSP 启动
+                end
+
+                -- 正常文件：查找项目根目录并调用 on_dir 启动 LSP
+                local root = vim.fs.root(bufnr, {
+                    "compile_commands.json",
+                    "compile_flags.txt",
+                    ".git",
+                })
+                if root then
+                    on_dir(root)
+                end
+            end,
         }
 
         -- 启用 clangd

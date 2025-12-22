@@ -22,6 +22,7 @@ return {
 				position = "left",
 				width = 30,
 				mappings = {
+					-- w = "open_with_window_picker" (默认配置，无需显式声明)
 					["t"] = "noop", -- 禁用在新标签页打开文件
 				},
 			},

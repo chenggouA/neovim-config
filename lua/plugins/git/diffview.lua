@@ -21,10 +21,19 @@ return {
 				DiffviewOpen = { "--imply-local" },
 			},
 
-			-- 自定义文件面板按键映射（与 neo-tree 保持一致）
+			-- 自定义按键映射
 			keymaps = {
+				-- 禁用 view 中和用户配置冲突的默认按键
+				view = {
+					{ "n", "<leader>b", false }, -- 禁用（与标签页管理冲突）
+					{ "n", "<leader>e", false }, -- 禁用（与 neo-tree 冲突）
+				},
+
+				-- 文件面板按键映射（与 neo-tree 保持一致）
 				file_panel = {
 					{ "n", "w", actions.select_entry, { desc = "打开文件 diff (与 neo-tree 一致)" } },
+					{ "n", "<leader>b", false }, -- 禁用（与标签页管理冲突）
+					{ "n", "<leader>e", false }, -- 禁用（与 neo-tree 冲突）
 				},
 			},
 		})

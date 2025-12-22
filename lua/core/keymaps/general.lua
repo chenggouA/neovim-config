@@ -24,22 +24,19 @@ function M.setup()
 		require("core.python").activate_project_venv()
 	end, "激活项目 .venv 并重启 Pyright")
 
-	-- 类 VSCode 的编辑器历史导航：Alt+Left/Right 后退/前进
-	map("n", "<A-Left>", "<C-o>", "返回上一位置")
-	map("n", "<A-Right>", "<C-i>", "前进到下一位置")
-	-- 兼容部分终端把 Alt 识别为 Meta（M-）
-	map("n", "<M-Left>", "<C-o>", "返回上一位置 (M-)")
-	map("n", "<M-Right>", "<C-i>", "前进到下一位置 (M-)")
+	-- 历史导航：Leader+方向键 后退/前进
+	map("n", "<leader><Left>", "<C-o>", "返回上一位置")
+	map("n", "<leader><Right>", "<C-i>", "前进到下一位置")
 
-	-- 标签页管理（Alt 系列）
-	map("n", "<A-t>", "<cmd>tabnew | Alpha<CR>", "新建标签页并打开启动面板")
-	map("n", "<A-w>", "<cmd>tabclose<CR>", "关闭当前标签页")
-	map("n", "<A-[>", "<cmd>tabprev<CR>", "上一个标签页")
-	map("n", "<A-]>", "<cmd>tabnext<CR>", "下一个标签页")
+	-- 标签页管理（Leader b 系列，解决 macOS Neovide 远程连接容器时 Alt 键失效问题）
+	map("n", "<leader>bn", "<cmd>tabnew | Alpha<CR>", "新建标签页")
+	map("n", "<leader>bc", "<cmd>tabclose<CR>", "关闭当前标签页")
+	map("n", "<leader>b<Left>", "<cmd>tabprev<CR>", "上一个标签页")
+	map("n", "<leader>b<Right>", "<cmd>tabnext<CR>", "下一个标签页")
 
-	-- 快速跳转到指定标签页（Alt + 1-9）
+	-- 快速跳转到指定标签页（Leader + 1-9，无描述以节省 which-key 空间）
 	for i = 1, 9 do
-		map("n", "<A-" .. i .. ">", i .. "gt", "跳转到标签页 " .. i)
+		vim.keymap.set("n", "<leader>" .. i, i .. "gt", { noremap = true, silent = true })
 	end
 end
 

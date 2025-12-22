@@ -6,4 +6,5 @@ return {
 	require("plugins.navigation.window_picker"),
 	require("plugins.navigation.flash"),
 	require("plugins.navigation.project"),
+    --	require("plugins.navigation.aerial"),
 }

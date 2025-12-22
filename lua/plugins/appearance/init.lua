@@ -7,4 +7,5 @@ return {
 	require("plugins.appearance.mini"),
 	require("plugins.appearance.which_key"),
 	require("plugins.appearance.indent_blankline"),
+	require("plugins.appearance.noice"),
 }
