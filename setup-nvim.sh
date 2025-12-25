@@ -70,7 +70,9 @@ sudo apt-get install -y \
     cmake \
     ripgrep \
     fd-find \
-    sudo
+    sudo \
+    clang \
+    clangd
 
 # ============================================================================
 # 3. 安装 Python 环境
@@ -178,8 +180,12 @@ echo "  - Node.js: $(node --version)"
 echo "  - Python: $(python3 --version)"
 echo ""
 echo_info "通过 Mason 自动安装的工具 (首次启动后):"
-echo "  - LSP: pyright, jsonls, marksman, clangd"
-echo "  - Tools: stylua, prettier, ruff, jq, buf (Protocol Buffers LSP+formatter)"
+echo "  - LSP: pyright, jsonls, marksman"
+echo "  - Tools: stylua, prettier, ruff, buf (Protocol Buffers LSP+formatter)"
+echo ""
+echo_info "通过系统包管理器安装的工具:"
+echo "  - LSP: clangd (C/C++)"
+echo "  - Compiler: clang (C/C++)"
 echo ""
 echo_info "使用方法:"
 echo "  直接运行: nvim"

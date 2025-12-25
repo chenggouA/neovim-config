@@ -52,7 +52,7 @@ sudo apt install nodejs python3 python3-pip build-essential ripgrep
 以下工具会在 Neovim 启动后 3 秒自动安装，**无需手动操作**：
 
 **LSP 服务器**：pyright, jsonls, marksman, clangd
-**开发工具**：stylua, prettier, jq, ruff, buf (Protocol Buffers LSP+formatter)
+**开发工具**：stylua, prettier, ruff, buf (Protocol Buffers LSP+formatter)
 
 💡 **提示**：首次启动后可通过 `:Mason` 查看所有工具的安装状态。
 

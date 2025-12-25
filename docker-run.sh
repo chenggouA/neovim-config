@@ -1,9 +1,15 @@
 #!/bin/bash
 # ============================================================================
 # Run Neovim Docker Container with Remote Access
+#
 # Usage:
-#   ./docker-run.sh          # Normal mode (bash)
+#   ./docker-run.sh          # Normal mode (interactive bash)
 #   ./docker-run.sh server   # Server mode (auto-start nvim server)
+#
+# Features:
+# - Runs as user 'chenggou' inside container
+# - Maps Neovim server port 6666 for remote access
+# - Mounts ./workspace to /home/chenggou/workspace
 # ============================================================================
 
 set -e

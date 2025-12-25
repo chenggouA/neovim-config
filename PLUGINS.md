@@ -52,7 +52,7 @@
 
 ### mason-tool-installer.nvim
 **仓库**: `WhoIsSethDaniel/mason-tool-installer.nvim`
-**作用**: 自动安装和管理 formatters、linters 等开发工具（stylua、prettier、jq、ruff、buf）
+**作用**: 自动安装和管理 formatters、linters 等开发工具（stylua、prettier、ruff、buf）
 
 ### schemastore.nvim
 **仓库**: `b0o/schemastore.nvim`
@@ -88,7 +88,7 @@
 
 ### conform.nvim
 **仓库**: `stevearc/conform.nvim`
-**作用**: 统一代码格式化工具，支持 Lua (stylua)、JSON (jq)、Markdown (prettier)、Python (ruff)、Protocol Buffers (buf)
+**作用**: 统一代码格式化工具，支持 Lua (stylua)、JSON (prettier)、Markdown (prettier)、Python (ruff)、Protocol Buffers (buf)
 
 ### nvim-treesitter
 **仓库**: `nvim-treesitter/nvim-treesitter`

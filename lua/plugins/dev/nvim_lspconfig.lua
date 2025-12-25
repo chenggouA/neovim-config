@@ -114,6 +114,9 @@ return {
 
         --------------------------------------------------------------------------
         -- ② clangd ─ C/C++ LSP
+        -- 注意: clangd 通过系统包管理器安装 (apt install clangd)，而非 Mason
+        -- 原因: Mason 不支持某些平台（ARM64 等）的 clangd 预编译二进制
+        -- 参考: https://github.com/mason-org/mason-registry/issues/5800
         --------------------------------------------------------------------------
         vim.lsp.config.clangd = {
             capabilities = capabilities,

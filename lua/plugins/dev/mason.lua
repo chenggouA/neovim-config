@@ -9,9 +9,10 @@ return {
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"pyright",  -- Python LSP
-				"jsonls",   -- JSON LSP
+				"jsonls",   -- JSON LSP (语法检查 + 代码提示 + schema 验证)
 				"marksman", -- Markdown LSP
-				"clangd",   -- C/C++ LSP
+				-- clangd: 使用系统安装（apt install clangd），因为 Mason 不支持某些平台（ARM64 等）
+				-- 参考: https://github.com/mason-org/mason-registry/issues/5800
 				-- buf 通过 mason-tool-installer 安装（它同时提供 LSP + formatter）
 			},
 			automatic_enable = false,     -- 不自动启动（由 lspconfig 手动控制）
@@ -26,7 +27,6 @@ return {
 				"prettier", -- Markdown/JSON formatter
 				"ruff",     -- Python formatter/linter
 				"buf",      -- Protocol Buffers (LSP + formatter + linter 多合一)
-				"jq",       -- JSON formatter
 			},
 			auto_update = true,  -- 自动更新工具
 			run_on_start = true, -- 启动时检查并安装

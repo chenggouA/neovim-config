@@ -1,6 +1,11 @@
 #!/bin/bash
 # ============================================================================
 # Neovim Docker Image Build Script - Multi-Architecture Support
+#
+# 构建说明：
+# - 使用 setup-nvim.sh 脚本进行核心安装（Neovim、Node.js、工具等）
+# - 自动检测架构（x86_64/arm64）并下载对应版本
+# - 以普通用户 chenggou 运行，脚本内部使用 sudo
 # ============================================================================
 
 set -e
@@ -16,6 +21,7 @@ echo "============================================="
 echo "Building Neovim Development Environment"
 echo "Image: ${FULL_IMAGE_NAME}"
 echo "Platform: ${PLATFORM}"
+echo "Build Method: setup-nvim.sh script"
 echo "============================================="
 
 # Build the Docker image with platform specification
