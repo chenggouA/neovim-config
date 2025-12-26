@@ -26,8 +26,8 @@ function M.mapping(cmp, luasnip)
 		["<C-b>"] = cmp.mapping.scroll_docs(-4),
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 
-		-- Ctrl-Space: 手动触发补全
-		["<C-Space>"] = cmp.mapping.complete(),
+		-- Ctrl-n: 手动触发补全（避免与系统输入法切换冲突）
+		["<C-n>"] = cmp.mapping.complete(),
 	})
 end
 

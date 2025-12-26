@@ -149,7 +149,7 @@ return {
 		})
 
 		-- 添加快捷键重新打开启动面板
-		vim.keymap.set("n", "<leader>h", function()
+		vim.keymap.set("n", "<leader>o", function()
 			require("alpha").start()
 		end, { desc = "打开启动面板", noremap = true, silent = true })
 	end,
