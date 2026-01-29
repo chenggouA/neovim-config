@@ -68,7 +68,12 @@ if vim.g.neovide then
 	vim.g.neovide_window_blurred = true -- 窗口失焦时模糊
 
 	-- macOS 特定优化
-	vim.g.neovide_input_macos_option_key_is_meta = "only_left" -- 左 Option 键作为 Meta
+	-- 设置 Option 键行为：
+	--   "both": 左右 Option 都作为 Meta (Alt) 键，不产生特殊字符
+	--   "only_left": 只有左 Option 作为 Meta，右 Option 仍产生特殊字符
+	--   "only_right": 只有右 Option 作为 Meta
+	--   "none": 两个 Option 都产生特殊字符（macOS 默认行为）
+	vim.g.neovide_input_macos_option_key_is_meta = "both" -- 左右 Option 都作为 Meta
 
 	-- 透明度调整函数
 	local function change_opacity(delta)

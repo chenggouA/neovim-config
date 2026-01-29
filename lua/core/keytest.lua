@@ -54,6 +54,34 @@ M.interactive_test = function()
     end
 end
 
+-- Setup test keymaps for Alt keys
+M.setup_test_keymaps = function()
+    -- Test Alt key mappings
+    local test_keys = { "h", "j", "k", "l", "t", "n" }
+
+    for _, key in ipairs(test_keys) do
+        vim.keymap.set("n", "<M-" .. key .. ">", function()
+            vim.notify(
+                string.format("✓ Alt+%s is working! (received <M-%s>)", key, key),
+                vim.log.levels.INFO
+            )
+        end, { desc = "Test Alt+" .. key })
+    end
+
+    vim.notify("Alt key test mappings installed. Try pressing Alt+h/j/k/l/t/n", vim.log.levels.INFO)
+end
+
+-- Cleanup test keymaps
+M.cleanup_test_keymaps = function()
+    local test_keys = { "h", "j", "k", "l", "t", "n" }
+
+    for _, key in ipairs(test_keys) do
+        vim.keymap.del("n", "<M-" .. key .. ">")
+    end
+
+    vim.notify("Alt key test mappings removed", vim.log.levels.INFO)
+end
+
 -- Setup commands
 M.setup = function()
     vim.api.nvim_create_user_command("KeyTest", M.test_key, {
@@ -64,7 +92,15 @@ M.setup = function()
         desc = "Interactive key testing mode (ESC to exit)"
     })
 
-    vim.notify("Key test commands loaded: :KeyTest and :KeyTestInteractive", vim.log.levels.INFO)
+    vim.api.nvim_create_user_command("KeyTestAlt", M.setup_test_keymaps, {
+        desc = "Install Alt key test mappings (Alt+h/j/k/l/t/n)"
+    })
+
+    vim.api.nvim_create_user_command("KeyTestAltClean", M.cleanup_test_keymaps, {
+        desc = "Remove Alt key test mappings"
+    })
+
+    vim.notify("Key test commands loaded: :KeyTest, :KeyTestInteractive, :KeyTestAlt", vim.log.levels.INFO)
 end
 
 return M
