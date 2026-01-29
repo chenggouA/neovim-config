@@ -2,6 +2,9 @@
 require("core.options")
 require("core.keymaps")
 
+-- 加载按键测试工具（用于调试 Alt 键问题）
+require("core.keytest").setup()
+
 -- 设置 lazy.nvim 的安装路径
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 -- 如果路径不存在则自动克隆仓库
